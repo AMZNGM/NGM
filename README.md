@@ -6,7 +6,7 @@
 
 Web app for NGM
 
-[Live Here](https://ngm.vercel.app/)
+[Live Here](https://ngm-lemon.vercel.app/)
 
 </div>
 

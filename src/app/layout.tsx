@@ -87,7 +87,7 @@ export const secFont = Major_Mono_Display({
 // })
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://ngm.vercel.app'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://ngm-lemon.vercel.app/'),
 
   title: {
     default: 'NGM – Creative Frontend Developer',
@@ -125,7 +125,7 @@ export const metadata = {
   openGraph: {
     title: 'Abdulrahman NGM – Creative Frontend Developer',
     description: 'Creative frontend developer building motion-driven web experiences with React, Next.js, GSAP, and Framer Motion.',
-    url: 'https://ngm.vercel.app',
+    url: 'https://ngm-lemon.vercel.app/',
     siteName: 'Abdulrahman NGM Portfolio',
     locale: 'en_US',
     type: 'website',
