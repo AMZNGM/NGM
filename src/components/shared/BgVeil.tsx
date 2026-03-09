@@ -75,7 +75,16 @@ void main(){
 }
 `
 
-type Props = {
+export default function BgVeil({
+  hueShift = -125,
+  noiseIntensity = 0.01,
+  scanlineIntensity = 0,
+  speed = 1.9,
+  scanlineFrequency = 0,
+  warpAmount = 10,
+  resolutionScale = 1.5,
+  className = '',
+}: {
   hueShift?: number
   noiseIntensity?: number
   scanlineIntensity?: number
@@ -84,21 +93,11 @@ type Props = {
   warpAmount?: number
   resolutionScale?: number
   className?: string
-}
+}) {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
 
-export default function BgVeil({
-  hueShift = -125,
-  noiseIntensity = 0.01,
-  scanlineIntensity = 0,
-  speed = 1.9,
-  scanlineFrequency = 0,
-  warpAmount = 0,
-  resolutionScale = 1.5,
-  className = '',
-}: Props) {
-  const ref = useRef<HTMLCanvasElement>(null)
   useEffect(() => {
-    const canvas = ref.current as HTMLCanvasElement
+    const canvas = canvasRef.current as HTMLCanvasElement
     const parent = canvas.parentElement as HTMLElement
 
     const renderer = new Renderer({
@@ -156,5 +155,6 @@ export default function BgVeil({
       window.removeEventListener('resize', resize)
     }
   }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale])
-  return <canvas ref={ref} className={`absolute inset-0 ${className}`} />
+
+  return <canvas ref={canvasRef} className={`absolute inset-0 ${className}`} />
 }
