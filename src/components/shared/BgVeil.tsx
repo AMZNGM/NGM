@@ -68,6 +68,32 @@ void mainImage(out vec4 fragColor,in vec2 fragCoord){
 void main(){
     vec4 col;mainImage(col,gl_FragCoord.xy);
     col.rgb=hueShiftRGB(col.rgb,uHueShift);
+
+    vec3 baseColor = vec3(10.0/5.0, 8.0/25.0, 90.0/55.0);
+    col.rgb *= baseColor;
+
+    vec2 uv = gl_FragCoord.xy / uResolution.xy;
+    vec3 finalNoiseColor = vec3(0.0);
+
+    for(int i = 0; i < 8; i++) {
+        float indexFactor = float(i) * 2.1;
+
+        float spatialFactor = sin(uv.x * 10.0 + float(i)) * cos(uv.y * 10.0 + float(i));
+
+        vec3 noiseColor = vec3(
+            sin(uTime * 0.3 + indexFactor + spatialFactor) * 0.5 + 0.5,
+            cos(uTime * 0.5 + indexFactor + spatialFactor * 1.5) * 0.5 + 0.5,
+            sin(uTime * 0.7 + indexFactor + spatialFactor * 2.0) * 0.5 + 0.5
+        );
+
+        float weight = 0.05 * float(i + 1) / 8.0;
+        weight *= (0.5 + 0.5 * spatialFactor);
+
+        finalNoiseColor += noiseColor * weight;
+    }
+
+    col.rgb = mix(col.rgb, finalNoiseColor, 0.3);
+
     float scanline_val=sin(gl_FragCoord.y*uScanFreq)*0.5+0.5;
     col.rgb*=1.-(scanline_val*scanline_val)*uScan;
     col.rgb+=(rand(gl_FragCoord.xy+uTime)-0.5)*uNoise;
@@ -76,12 +102,12 @@ void main(){
 `
 
 export default function BgVeil({
-  hueShift = -125,
+  hueShift = -5,
   noiseIntensity = 0.01,
   scanlineIntensity = 0,
-  speed = 1.9,
+  speed = 1.1,
   scanlineFrequency = 0,
-  warpAmount = 10,
+  warpAmount = 11,
   resolutionScale = 1.5,
   className = '',
 }: {
@@ -156,5 +182,5 @@ export default function BgVeil({
     }
   }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale])
 
-  return <canvas ref={canvasRef} className={`absolute inset-0 ${className}`} />
+  return <canvas ref={canvasRef} className={`absolute inset-0 max-w-dvw max-h-dvh opacity-30 ${className}`} />
 }
