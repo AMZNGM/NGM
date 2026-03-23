@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { PROJECTS } from '@/data/db'
@@ -36,7 +35,12 @@ export default function Projects() {
 
   return (
     <>
-      <section className="md:bottom-4 md:left-1/2 z-10 md:absolute md:w-1/2 max-md:mt-28 max-md:mb-28 max-md:p-4 md:pe-4 pointer-events-auto">
+      <section
+        onMouseLeave={() => {
+          if (!isMobile) setHoveredProject(null)
+        }}
+        className="md:bottom-4 md:left-1/2 z-50 md:absolute md:w-1/2 max-md:mt-28 max-md:mb-28 max-md:p-4 md:pe-4 pointer-events-auto"
+      >
         <AnimText className="font-mono text-main text-xs uppercase tracking-widest mb-6">Featured_Projects_</AnimText>
 
         {PROJECTS.map((project, i) => {
@@ -45,18 +49,22 @@ export default function Projects() {
           return (
             <motion.div
               key={i}
-              layout
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * i }}
-              onClick={() => {
+              onMouseEnter={() => {
                 if (!isMobile) {
                   setHoveredProject(project)
+                }
+              }}
+              onClick={() => {
+                if (!isMobile) {
+                  window.open(project.link, '_blank')
                 } else {
                   setExpandedMobileIndex(isMobileExpanded ? null : i)
                 }
               }}
-              className="group border-text/10 hover:border-main border-l hover:text-main transition-all duration-200 pt-1 pl-2 cursor-pointer"
+              className="group border-text/10 hover:border-main border-l hover:text-main transition-all duration-200 pt-12 pl-2 cursor-pointer"
             >
               <div className="flex justify-between gap-4 duration-200 group-hover:px-1 cursor-pointer">
                 <AnimText as={'h3'} className="w-1/2 max-md:w-full font-medium text-xl">
@@ -87,7 +95,7 @@ export default function Projects() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: easings.cubiz }}
                     onClick={(e) => e.stopPropagation()}
-                    className="md:hidden overflow-hidden bg-main/30 mt-2 p-2"
+                    className="md:hidden overflow-hidden bg-main/30 mt-2 p-2 orit"
                   >
                     <button
                       onClick={() => window.open(project.link, '_blank')}
@@ -133,22 +141,6 @@ export default function Projects() {
                         </span>
                       ))}
                     </div>
-
-                    {project.images && project.images.length > 0 && (
-                      <div className="gap-4 grid grid-cols-1 mt-6">
-                        {project.images.map((img, j) => (
-                          <motion.div
-                            key={j}
-                            initial={{ scale: 0.9, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ delay: 0.2 + j * 0.1 }}
-                            className="relative aspect-video overflow-hidden bg-text/5"
-                          >
-                            <Image src={img} alt={`${project.title} preview ${j + 1}`} fill className="object-cover" />
-                          </motion.div>
-                        ))}
-                      </div>
-                    )}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -168,25 +160,18 @@ export default function Projects() {
             exit={{ y: '100%' }}
             transition={{ duration: 0.5, ease: easings.cubiz }}
             onClick={handleOutsideClick}
-            className="max-md:hidden z-50 fixed inset-0 pointer-events-auto"
+            className="max-md:hidden z-40 fixed inset-0 pointer-events-auto"
           >
             <div
               onClick={(e) => e.stopPropagation()}
               onWheel={(e) => e.stopPropagation()}
               onTouchMove={(e) => e.stopPropagation()}
-              className="bottom-0 left-[12%] absolute w-[35dvw] h-[80dvh] bg-main/30 p-4 pb-0"
+              className="bottom-0 left-[12%] absolute w-[35dvw] h-fit min-h-[40dvh] bg-main/30 p-4"
             >
               <div className="h-full overflow-y-auto">
                 <AnimText as="h3" className="text-2xl mb-4">
                   {hoveredProject.title}
                 </AnimText>
-
-                <button
-                  onClick={() => window.open(hoveredProject.link, '_blank')}
-                  className="bg-main hover:bg-text font-sec hover:text-main text-sm uppercase tracking-widest transition-colors duration-200 mb-6 px-2 py-1 cursor-pointer"
-                >
-                  Take a look
-                </button>
 
                 <p className="font-sec text-text/60 text-sm mb-4">{hoveredProject.description}</p>
                 <p className="text-text/80 text-sm leading-relaxed mb-6">{hoveredProject.longDescription}</p>
@@ -225,22 +210,6 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-
-                {hoveredProject.images && hoveredProject.images.length > 0 && (
-                  <div className="gap-4 grid grid-cols-1 mt-6">
-                    {hoveredProject.images.map((img, j) => (
-                      <motion.div
-                        key={j}
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ delay: 0.2 + j * 0.1 }}
-                        className="relative aspect-video overflow-hidden bg-text/5"
-                      >
-                        <Image src={img} alt={`${hoveredProject.title} preview ${j + 1}`} fill className="object-cover" />
-                      </motion.div>
-                    ))}
-                  </div>
-                )}
               </div>
             </div>
           </motion.div>

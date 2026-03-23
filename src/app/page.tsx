@@ -1,7 +1,6 @@
 import { Suspense } from 'react'
 
 import Hero from '@/components/home-components/Hero'
-import NGM from '@/components/home-components/NGM'
 import BgDitherVeil from '@/components/ui/BgDitherVeil'
 
 export const metadata = {
@@ -54,7 +53,6 @@ export default function Home() {
     <Suspense>
       <BgDitherVeil />
       <Hero />
-      <NGM />
     </Suspense>
   )
 }
