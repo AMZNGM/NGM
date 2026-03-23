@@ -26,7 +26,7 @@ function Word({ word, index, stagger, delay, reduced }: { word: string; index: n
 }
 
 // ─── main component ────────────────────────────────────────────────────────
-export default function AnimText({
+export default function AnimText<T extends React.ElementType = 'div'>({
   children,
   className = '',
   as: Tag = 'div',
@@ -37,18 +37,21 @@ export default function AnimText({
 }: {
   children: React.ReactNode
   className?: string
-  as?: React.ElementType
+  as?: T
   delay?: number
   stagger?: number
   once?: boolean
-  [key: string]: any
-}) {
+} & React.ComponentPropsWithoutRef<T>) {
   const reduced = useReducedMotion() ?? false
   const ref = useRef<HTMLElement>(null)
   const inView = useInView(ref, { once })
 
   const isStrOrNum = typeof children === 'string' || typeof children === 'number'
   const isTText = isValidElement(children) && 'tKey' in (children.props as object)
+
+  // ── string: split into words, animate each ──────────────────────────────
+  const text = String(children)
+  const tokens = useMemo(() => text.split(/(\s+)/), [text])
 
   // ── non-text children: single block reveal ──────────────────────────────
   if (!isStrOrNum && !isTText) {
@@ -65,10 +68,6 @@ export default function AnimText({
       </Tag>
     )
   }
-
-  // ── string: split into words, animate each ──────────────────────────────
-  const text = String(children)
-  const tokens = useMemo(() => text.split(/(\s+)/), [text])
 
   // track word index separately (skip whitespace tokens)
   let wordIdx = -1
