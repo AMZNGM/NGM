@@ -1,15 +1,8 @@
 @import 'locomotive-scroll/dist/locomotive-scroll.css';
 @import 'tailwindcss';
 @theme {
-  --color-main: #d71000;
-  /* --color-main: #0A1B2F; */
-  /* --color-main: #486A66; */
-  /* --color-main: #17151f; */
-
-  --color-bg: #080b0a;
-  /* --color-bg: #0c0c0c; */
-  /* --color-bg: #0e1012; */
-
+  --color-main: #614f72;
+  --color-bg: #0d0b0e;
   --color-text: #fff;
 
   --font-sec: var(--font-sec);
@@ -19,7 +12,4 @@
 }
 html {
   scrollbar-width: none;
-}
-body:has(.hide-footer) footer {
-  display: none;
 }

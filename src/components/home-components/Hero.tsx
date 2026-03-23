@@ -1,12 +1,15 @@
-import BgVeil from '@/components/shared/BgVeil'
-import AnimIn from '@/components/ui/unstyled/AnimIn'
+import Navigation from '@/components/home-components/Navigation'
+import About from '@/components/home-components/About'
+import Projects from '@/components/home-components/Projects'
 
 export default function Hero() {
   return (
-    <div className="relative flex justify-center items-center w-dvw h-dvh text-3xl text-center">
-      <BgVeil />
-
-      {/* <AnimIn className="z-10 relative max-w-xl mx-auto">ngm</AnimIn> */}
-    </div>
+    <section className="relative w-dvw min-h-dvh md:overflow-hidden">
+      <Navigation />
+      <div className="max-md:hidden">
+        <About />
+      </div>
+      <Projects />
+    </section>
   )
 }

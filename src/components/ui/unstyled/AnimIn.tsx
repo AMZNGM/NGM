@@ -14,6 +14,8 @@ interface AnimInProps extends MotionProps {
   scale?: boolean
   toDown?: boolean
   blur?: boolean
+  onMouseEnter?: (event: React.MouseEvent<HTMLElement>) => void
+  onMouseLeave?: (event: React.MouseEvent<HTMLElement>) => void
 }
 
 const AnimIn = forwardRef<HTMLElement, AnimInProps>(
@@ -22,7 +24,7 @@ const AnimIn = forwardRef<HTMLElement, AnimInProps>(
       children,
       as = 'div',
       className = '',
-      delay = 0,
+      delay = 0.3,
       duration = 0.75,
       once = true,
       center = false,

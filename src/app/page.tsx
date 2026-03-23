@@ -1,16 +1,15 @@
-// import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 
 import Hero from '@/components/home-components/Hero'
-import Loader from '@/components/shared/Loader'
-// const About = dynamic(() => import('@/components/home-components/About'))
+import NGM from '@/components/home-components/NGM'
+import BgDitherVeil from '@/components/ui/BgDitherVeil'
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://ngm-lemon.vercel.app/'),
 
   title: {
-    default: 'NGM – Creative Frontend Developer',
-    template: '%s | Abdulrahman NGM',
+    default: '_N G M',
+    template: '%s | Abdulrahman NGM | N G M |  – Creative Frontend Developer',
   },
 
   description:
@@ -52,8 +51,10 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <Suspense fallback={<Loader />}>
+    <Suspense>
+      <BgDitherVeil />
       <Hero />
+      <NGM />
     </Suspense>
   )
 }

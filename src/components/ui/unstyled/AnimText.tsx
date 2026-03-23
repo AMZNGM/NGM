@@ -30,7 +30,7 @@ export default function AnimText({
   children,
   className = '',
   as: Tag = 'div',
-  delay = 0,
+  delay = 0.3,
   stagger = 0.06,
   once = true,
   ...props
@@ -45,7 +45,7 @@ export default function AnimText({
 }) {
   const reduced = useReducedMotion() ?? false
   const ref = useRef<HTMLElement>(null)
-  const inView = useInView(ref, { once, margin: '0px 0px -60px 0px' })
+  const inView = useInView(ref, { once })
 
   const isStrOrNum = typeof children === 'string' || typeof children === 'number'
   const isTText = isValidElement(children) && 'tKey' in (children.props as object)

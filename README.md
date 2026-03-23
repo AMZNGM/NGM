@@ -2,9 +2,7 @@
 
 # NGM
 
-**Abdulrahman NGM Creative Frontend Developer.**
-
-Web app for NGM
+**my portfolio.**
 
 [Live Here](https://ngm-lemon.vercel.app/)
 
@@ -12,7 +10,7 @@ Web app for NGM
 
 ## Tech Stack
 
-Next.js - React - TypeScript - Framer Motion - Tailwind CSS - Locomotive Scroll - Lucide Icons - Firebase
+Next.js - React - TypeScript - Framer Motion - threejs - react-three/fiber - react-three/postprocessing - Tailwind CSS - Locomotive Scroll - Lucide Icons
 
 ```bash
 # Install dependencies

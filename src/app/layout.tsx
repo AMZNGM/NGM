@@ -1,90 +1,79 @@
 import './globals.css'
 import localFont from 'next/font/local'
-import { Major_Mono_Display } from 'next/font/google'
 import AppWrapper from '@/components/app-components/AppWrapper'
 
-export const mainFont = localFont({
-  // src: '../../public/fonts/Rinter/Rinter.woff2',
-  src: '../../public/fonts/kiona/Kiona-Regular.ttf',
-
-  // src: [
-  //   {
-  //     path: '../../public/fonts/Satoshi/Satoshi-Variable.woff2',
-  //     weight: '100 900',
-  //     style: 'normal',
-  //   },
-  //   {
-  //     path: '../../public/fonts/Satoshi/Satoshi-VariableItalic.woff2',
-  //     weight: '100 900',
-  //     style: 'italic',
-  //   },
-  //   {
-  //     path: '../../public/fonts/Satoshi/Satoshi-Light.woff2',
-  //     weight: '300',
-  //     style: 'normal',
-  //   },
-  //   {
-  //     path: '../../public/fonts/Satoshi/Satoshi-LightItalic.woff2',
-  //     weight: '300',
-  //     style: 'italic',
-  //   },
-  //   {
-  //     path: '../../public/fonts/Satoshi/Satoshi-Regular.woff2',
-  //     weight: '400',
-  //     style: 'normal',
-  //   },
-  //   {
-  //     path: '../../public/fonts/Satoshi/Satoshi-Italic.woff2',
-  //     weight: '400',
-  //     style: 'italic',
-  //   },
-  //   {
-  //     path: '../../public/fonts/Satoshi/Satoshi-Medium.woff2',
-  //     weight: '500',
-  //     style: 'normal',
-  //   },
-  //   {
-  //     path: '../../public/fonts/Satoshi/Satoshi-MediumItalic.woff2',
-  //     weight: '500',
-  //     style: 'italic',
-  //   },
-  //   {
-  //     path: '../../public/fonts/Satoshi/Satoshi-Bold.woff2',
-  //     weight: '700',
-  //     style: 'normal',
-  //   },
-  //   {
-  //     path: '../../public/fonts/Satoshi/Satoshi-BoldItalic.woff2',
-  //     weight: '700',
-  //     style: 'italic',
-  //   },
-  //   {
-  //     path: '../../public/fonts/Satoshi/Satoshi-Black.woff2',
-  //     weight: '900',
-  //     style: 'normal',
-  //   },
-  //   {
-  //     path: '../../public/fonts/Satoshi/Satoshi-BlackItalic.woff2',
-  //     weight: '900',
-  //     style: 'italic',
-  //   },
-  // ],
+export const satoshi_font = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Satoshi/Satoshi-Variable.woff2',
+      weight: '100 900',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Satoshi/Satoshi-VariableItalic.woff2',
+      weight: '100 900',
+      style: 'italic',
+    },
+    {
+      path: '../../public/fonts/Satoshi/Satoshi-Light.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Satoshi/Satoshi-LightItalic.woff2',
+      weight: '300',
+      style: 'italic',
+    },
+    {
+      path: '../../public/fonts/Satoshi/Satoshi-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Satoshi/Satoshi-Italic.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../../public/fonts/Satoshi/Satoshi-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Satoshi/Satoshi-MediumItalic.woff2',
+      weight: '500',
+      style: 'italic',
+    },
+    {
+      path: '../../public/fonts/Satoshi/Satoshi-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Satoshi/Satoshi-BoldItalic.woff2',
+      weight: '700',
+      style: 'italic',
+    },
+    {
+      path: '../../public/fonts/Satoshi/Satoshi-Black.woff2',
+      weight: '900',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Satoshi/Satoshi-BlackItalic.woff2',
+      weight: '900',
+      style: 'italic',
+    },
+  ],
   display: 'swap',
   variable: '--font-main',
 })
 
-export const secFont = Major_Mono_Display({
-  subsets: ['latin'],
-  weight: '400',
+export const monor_font = localFont({
+  src: '../../public/fonts/monor/Monor_Regular.otf',
+  variable: '--font-sec',
   display: 'swap',
-  variable: '--font-major',
 })
-
-// export const secFont = localFont({
-//   src: '../../public/fonts/monor/Monor_Regular.otf',
-//   variable: '--font-sec',
-//   display: 'swap',
-// })
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://ngm-lemon.vercel.app/'),
@@ -148,10 +137,10 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${mainFont.className} ${secFont.variable}`}>
+    <html lang="en" className={`${satoshi_font.className} ${monor_font.variable}`}>
       <body
         suppressHydrationWarning
-        className="relative w-full h-full overflow-x-hidden! bg-bg selection:bg-main text-text antialiased md:subpixel-antialiased scroll-smooth"
+        className="relative w-full h-full bg-bg selection:bg-main text-text antialiased md:subpixel-antialiased scroll-smooth"
       >
         <AppWrapper>{children}</AppWrapper>
       </body>
