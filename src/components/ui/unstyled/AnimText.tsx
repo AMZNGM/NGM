@@ -29,7 +29,7 @@ function Word({ word, index, stagger, delay, reduced }: { word: string; index: n
 export default function AnimText<T extends React.ElementType = 'div'>({
   children,
   className = '',
-  as: Tag = 'div',
+  as,
   delay = 0.3,
   stagger = 0.06,
   once = true,
@@ -42,6 +42,8 @@ export default function AnimText<T extends React.ElementType = 'div'>({
   stagger?: number
   once?: boolean
 } & React.ComponentPropsWithoutRef<T>) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const Tag: any = as || 'div'
   const reduced = useReducedMotion() ?? false
   const ref = useRef<HTMLElement>(null)
   const inView = useInView(ref, { once })
