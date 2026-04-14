@@ -40,8 +40,19 @@ export const arab_font = Cairo({
   variable: '--font-arab',
 })
 
+export const viewport = {
+  themeColor: '#0d0d0d',
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://ngm-lemon.vercel.app/'),
+
+  other: {
+    'preconnect-google-fonts': 'https://fonts.googleapis.com',
+    'preconnect-google-static': 'https://fonts.gstatic.com',
+  },
 
   title: {
     default: 'NGM – Creative Frontend Developer',
@@ -103,6 +114,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${main_font.className} ${sec_font.variable} ${wide_font.variable} ${arab_font.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+      </head>
       <body
         suppressHydrationWarning
         className="relative w-full h-full bg-bg selection:bg-main text-text selection:text-bg antialiased md:subpixel-antialiased scroll-smooth"

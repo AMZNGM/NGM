@@ -1,3 +1,5 @@
+import { Suspense } from 'react'
+import Loader from '@/components/ui/loaders/Loader'
 import Navbar from '@/components/nav-components/Navbar'
 import Bg from '@/components/ui/Bg'
 import Hero from '@/components/home-components/Hero'
@@ -50,13 +52,15 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main className="relative w-dvw md:h-dvh">
-      <Bg />
-      <div className="z-10 relative flex flex-col justify-between items-center size-full">
-        <Navbar />
-        <Hero />
-        <Footer />
-      </div>
-    </main>
+    <Suspense fallback={<Loader />}>
+      <main className="relative w-dvw md:h-dvh">
+        <Bg />
+        <div className="z-10 relative flex flex-col justify-between items-center size-full">
+          <Navbar />
+          <Hero />
+          <Footer />
+        </div>
+      </main>
+    </Suspense>
   )
 }

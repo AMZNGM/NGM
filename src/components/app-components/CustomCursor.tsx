@@ -61,7 +61,7 @@ export default function CustomCursor() {
           backdropFilter: 'url(#pixelate-filter)',
           WebkitBackdropFilter: 'url(#pixelate-filter)',
         }}
-        className="top-0 left-0 z-9999 fixed w-12 h-12 bg-text/5 border border-text/10 rounded-full pointer-events-none will-change-transform"
+        className="top-0 left-0 z-9999 fixed size-12 bg-text/5 border border-text/10 rounded-full pointer-events-none will-change-transform"
       />
     </>
   )

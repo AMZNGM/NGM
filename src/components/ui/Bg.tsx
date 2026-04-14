@@ -1,8 +1,13 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useBg } from '@/components/app-components/BgContext'
-import Silk from '@/components/ui/Silk'
+
+const Silk = dynamic(() => import('@/components/ui/Silk'), {
+  ssr: false,
+  loading: () => <div className="-z-1 fixed inset-0 bg-bg pointer-events-none select-none" />,
+})
 
 export default function Bg({ mode }: { mode?: number }) {
   const { bgMode: contextBgMode } = useBg()
