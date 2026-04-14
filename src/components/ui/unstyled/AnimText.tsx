@@ -1,7 +1,7 @@
 'use client'
 
 import { isValidElement, useMemo, useRef } from 'react'
-import { motion, useReducedMotion, useInView } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
 
 // ─── animation variants ────────────────────────────────────────────────────
 const WORD_HIDDEN = { y: '110%', opacity: 0 }
@@ -32,7 +32,6 @@ export default function AnimText<T extends React.ElementType = 'div'>({
   as,
   delay = 0.3,
   stagger = 0.06,
-  once = true,
   ...props
 }: {
   children: React.ReactNode
@@ -40,13 +39,11 @@ export default function AnimText<T extends React.ElementType = 'div'>({
   as?: T
   delay?: number
   stagger?: number
-  once?: boolean
 } & React.ComponentPropsWithoutRef<T>) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Tag: any = as || 'div'
   const reduced = useReducedMotion() ?? false
   const ref = useRef<HTMLElement>(null)
-  const inView = useInView(ref, { once })
 
   const isStrOrNum = typeof children === 'string' || typeof children === 'number'
   const isTText = isValidElement(children) && 'tKey' in (children.props as object)
@@ -62,7 +59,7 @@ export default function AnimText<T extends React.ElementType = 'div'>({
         <motion.span
           className="inline-block will-change-transform [direction:inherit]"
           initial={reduced ? WORD_VISIBLE : WORD_HIDDEN}
-          animate={inView ? WORD_VISIBLE : WORD_HIDDEN}
+          animate={WORD_VISIBLE}
           transition={{ ...WORD_TRANSITION, delay: Number(delay) }}
         >
           {children}
@@ -88,14 +85,7 @@ export default function AnimText<T extends React.ElementType = 'div'>({
         wordIdx++
         const idx = wordIdx
 
-        return inView ? (
-          <Word key={i} word={token} index={idx} stagger={stagger} delay={delay} reduced={reduced} />
-        ) : (
-          // keep layout stable before inView triggers
-          <span key={i} className="inline-block overflow-hidden align-bottom leading-[1.1] -mb-[0.1em] pb-[0.1em]">
-            <span className="inline-block opacity-0">{token}</span>
-          </span>
-        )
+        return <Word key={i} word={token} index={idx} stagger={stagger} delay={delay} reduced={reduced} />
       })}
     </Tag>
   )

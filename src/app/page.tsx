@@ -1,13 +1,13 @@
-import { Suspense } from 'react'
-
+import Navbar from '@/components/nav-components/Navbar'
+import Bg from '@/components/ui/Bg'
 import Hero from '@/components/home-components/Hero'
-import BgDitherVeil from '@/components/ui/BgDitherVeil'
+import Footer from '@/components/footer.components/Footer'
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://ngm-lemon.vercel.app/'),
 
   title: {
-    default: '_N G M',
+    default: '_N G M | Creative Developer',
     template: '%s | Abdulrahman NGM | N G M |  – Creative Frontend Developer',
   },
 
@@ -32,7 +32,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/NGM-CORRPRET.png',
+        url: '/images/NGM-CORRPRET.webp',
         width: 1200,
         height: 630,
         alt: 'Abdulrahman NGM - Creative Frontend Developer',
@@ -44,15 +44,19 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Abdulrahman NGM – Creative Frontend Developer',
     description: 'Creative frontend developer specializing in interactive and motion-driven websites.',
-    images: ['/images/NGM-CORRPRET.png'],
+    images: ['/images/NGM-CORRPRET.webp'],
   },
 }
 
 export default function Home() {
   return (
-    <Suspense>
-      <BgDitherVeil />
-      <Hero />
-    </Suspense>
+    <main className="relative w-dvw md:h-dvh">
+      <Bg />
+      <div className="z-10 relative flex flex-col justify-between items-center size-full">
+        <Navbar />
+        <Hero />
+        <Footer />
+      </div>
+    </main>
   )
 }

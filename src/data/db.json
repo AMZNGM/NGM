@@ -1,0 +1,625 @@
+{
+  "BIO": {
+    "name": "Abdulrahman NGM",
+    "title": "Creative Frontend developer",
+    "location": "Located Somewhere on Earth",
+    "summary": "specializing in interactive, motion-driven web experiences. Passionate about crafting smooth, high-performance interfaces with advanced animation and immersive storytelling.",
+    "experience": ">__Professional audio engineer with over 10 years of experience, contributing to global brand campaigns including Nike. Bringing a unique blend of creativity, precision, and technical problem-solving to modern web services__<",
+    "resume": "https://drive.google.com/file/d/1esW9MOoERWbN6vlk-MN942yZpA74OI2F/view?usp=sharing",
+    "audioTitle": "Audio Artist",
+    "audioBio": "Abdulrahman NGM Audio Engineer / Producer / Voice over Artist with over 10 years of experience in recording, producing, mixing, mastering, and sound designing. Worked with major brands such as Nike (Burj Khalifa commercial). Skilled in analog & digital consoles, microphones, and studio systems. Currently recording Riyad as-Salihin and White Nights audiobook. Seeking to transition into Live Dialogue Sound engineering.",
+    "audioLink": "https://amzngm.github.io/ngm-ae-portfolio/"
+  },
+
+  "CONTACT": [
+    { "href": "mailto:ppmm91453@mail.com", "text": "Mail" },
+    { "href": "https://github.com/AMZNGM", "text": "GitHub" },
+    { "href": "https://www.linkedin.com/in/amzngm/", "text": "LinkedIn" },
+    { "href": "tel:+201014722872", "text": "Whats App" },
+    { "href": "https://www.instagram.com/amzngm/", "text": "Instagram" },
+    { "href": "https://open.spotify.com/artist/2VsF2NWvL9ZA1IT2Ubpmjn?si=GZ3NImToRNqKulzAPvfMwQ", "text": "Spotify" }
+  ],
+
+  "WEB_SKILLS": [
+    {
+      "category": "Core",
+      "items": ["JavaScript (ES6+)", "TypeScript", "React", "Next.js", "HTML5", "CSS"]
+    },
+    {
+      "category": "Animation & Interaction",
+      "items": ["GSAP", "Framer Motion", "React Spring"]
+    },
+    {
+      "category": "3D & WebGL",
+      "items": ["Three.js", "React Three Fiber (R3F)", "React Three Drei"]
+    },
+    {
+      "category": "Styling",
+      "items": ["Tailwind CSS", "SCSS", "Bootstrap"]
+    },
+    {
+      "category": "Backend",
+      "items": ["Firebase", "Supabase"]
+    },
+    {
+      "category": "Tools & Deployment",
+      "items": ["Git", "GitHub", "Vercel", "Cloudinary"]
+    },
+    {
+      "category": "Advanced UI / Experience",
+      "items": ["Lenis", "Locomotive Scroll", "Swapy", "Howler.js"]
+    },
+    {
+      "category": "UI/UX & Design",
+      "items": ["Figma", "Responsive Design"]
+    }
+  ],
+
+  "AUDIO_SKILLS": [
+    {
+      "category": "DAWs",
+      "items": ["Pro Tools", "Ableton Live", "FL Studio", "Logic Pro", "Cubase", "Reaper"]
+    },
+    {
+      "category": "Core Audio Skills",
+      "items": ["Audio Engineering", "Music Production", "Sound Design", "Vocal Production", "Scoring (Film & Media)"]
+    },
+    {
+      "category": "Vocal & Performance",
+      "items": ["Voice Over", "Vocal Acting", "Vocal Editing & Tuning (Melodyne)"]
+    },
+    {
+      "category": "Post Production",
+      "items": ["Foley", "Audio Editing", "Mixing", "Mastering", "Audio Restoration", "Noise Reduction", "De-click / De-hum (iZotope RX)"]
+    },
+    {
+      "category": "Recording & Live Sound",
+      "items": ["Live Sound", "Live Mixing", "Mic Techniques (Vocals & Instruments)", "Studio Recording"]
+    },
+    {
+      "category": "Hardware",
+      "items": ["Analog Mixers", "Audio Interfaces", "Studio Signal Flow"]
+    },
+    {
+      "category": "Plugins & Processing",
+      "items": [
+        "UAD",
+        "FabFilter (Pro-Q, Pro-C)",
+        "iZotope (Ozone, RX)",
+        "Valhalla (Reverbs)",
+        "airwindows",
+        "Soundtoys",
+        "PSPaudioware",
+        "EQ / Compression / Limiting",
+        "Reverb & Delay Design",
+        "Saturation & Analog Emulation"
+      ]
+    },
+    {
+      "category": "Audio for Web & Interactive",
+      "items": ["Web Audio API", "Howler.js", "Interactive Audio for Websites"]
+    },
+    {
+      "category": "Audio for Media",
+      "items": ["Film Scoring", "Game Audio", "Podcast Production", "YouTube Audio Optimization"]
+    }
+  ],
+
+  "WEB_PROJECTS": [
+    {
+      "title": "Aymon Portfolio",
+      "description": "Co-designed and developed a fully animated personal portfolio focused on motion, rhythm, and immersive scroll-based storytelling.",
+      "longDescription": "A personal portfolio that pushes the boundaries of web motion. It features a custom animation system built on GSAP and Framer Motion, synchronized with smooth scrolling through Lenis. The project emphasizes performance while maintaining complex visual rhythms.",
+      "moreInfo": "Ahmed Ayman, known as Aymon, is a Cairo-born visual artist (est. 2003) who has spent over a decade mastering the art of visual storytelling. From photography and filmmaking to graphic design and 3D art, Aymon's work is characterized by powerful visuals and a deep emotional resonance. This web application serves as his digital canvas, showcasing his diverse portfolio and providing a platform for collaboration with major figures in the music and advertising industries.",
+      "stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "GSAP",
+        "Framer Motion",
+        "Three Js",
+        "React Three Fiber (RF3)",
+        "React Drei",
+        "Swapy",
+        "Tailwind CSS",
+        "Lenis",
+        "Lucide Icons",
+        "Firebase",
+        "Cloudinary",
+        "usehooks-ts"
+      ],
+      "link": "https://www.aymon.work/",
+      "images": [
+        "/images/projects/aymon/aymon-gif-3.gif",
+        "/images/projects/aymon/aymon-12.webp",
+        "/images/projects/aymon/aymon-gif-4.gif",
+        "/images/projects/aymon/aymon-1.webp",
+        "/images/projects/aymon/aymon-11.webp",
+        "/images/projects/aymon/aymon-2.webp",
+        "/images/projects/aymon/aymon-5.webp",
+        "/images/projects/aymon/aymon-3.webp",
+        "/images/projects/aymon/aymon-4.webp",
+        "/images/projects/aymon/aymon-8.webp",
+        "/images/projects/aymon/aymon-17.webp",
+        "/images/projects/aymon/aymon-6.webp",
+        "/images/projects/aymon/aymon-10.webp",
+        "/images/projects/aymon/aymon-16.webp",
+        "/images/projects/aymon/aymon-14.webp"
+      ],
+      "services": {
+        "type": "Creative Dev",
+        "role": "Web design, Fullstack",
+        "date": "2026-03-15"
+      }
+    },
+    {
+      "title": "Urbnlanes Website",
+      "description": "Interactive brand website featuring dynamic layouts, smooth scrolling, and gesture-based interactions.",
+      "longDescription": "A high-end real estate platform developed with a focus on luxury branding and user experience. It incorporates sophisticated scroll-triggered animations and a dynamic layout system that adapts to the brand's visual storytelling needs. Features multi-language support for English and Arabic audiences.",
+      "moreInfo": "Urbnlanes is a premier real estate development company operating under Emeel Abdalla Investments. This application serves as their digital gateway, showcasing masterpieces of architecture and construction across the Middle East.",
+      "stack": [
+        "Next.js",
+        "React 19",
+        "TypeScript",
+        "Framer Motion",
+        "Tailwind CSS",
+        "Locomotive Scroll",
+        "Lucide Icons",
+        "usehooks-ts",
+        "use-gesture"
+      ],
+      "link": "https://urbnlanes.vercel.app/",
+      "images": [
+        "/images/projects/urbnlanes/urbnlanes-gif-1.gif",
+        "/images/projects/urbnlanes/urbnlanes-20.webp",
+        "/images/projects/urbnlanes/urbnlanes-1.webp",
+        "/images/projects/urbnlanes/urbnlanes-5.webp",
+        "/images/projects/urbnlanes/urbnlanes-8.webp",
+        "/images/projects/urbnlanes/urbnlanes-24.webp",
+        "/images/projects/urbnlanes/urbnlanes-11.webp",
+        "/images/projects/urbnlanes/urbnlanes-26.webp",
+        "/images/projects/urbnlanes/urbnlanes-9.webp",
+        "/images/projects/urbnlanes/urbnlanes-10.webp",
+        "/images/projects/urbnlanes/urbnlanes-12.webp",
+        "/images/projects/urbnlanes/urbnlanes-16.webp",
+        "/images/projects/urbnlanes/urbnlanes-17.webp",
+        "/images/projects/urbnlanes/urbnlanes-19.webp",
+        "/images/projects/urbnlanes/urbnlanes-22.webp",
+        "/images/projects/urbnlanes/urbnlanes-25.webp",
+        "/images/projects/urbnlanes/urbnlanes-3.webp",
+        "/images/projects/urbnlanes/urbnlanes-13.webp"
+      ],
+      "languages": ["English", "Arabic"],
+      "services": {
+        "type": "Creative Dev",
+        "role": "Web design, Fullstack",
+        "date": "2026-02-10"
+      }
+    },
+    {
+      "title": "NGM Portfolio",
+      "description": "Minimal, expressive portfolio highlighting audio engineering work through motion-driven presentation.",
+      "moreInfo": "NGM Audio Engineering Portfolio is a modern, high-performance web application showcasing the professional work of Abdelrahman NGM, an experienced audio engineer and producer with over 10 years in the industry. The portfolio features collaborations with major brands like Nike, renowned artists, and various multimedia projects.",
+      "longDescription": "A unique intersection of sound and vision. This portfolio showcase uses rhythm-based animations to present over a decade of audio engineering excellence for global clients like Nike.",
+      "stack": ["React", "GSAP", "Tailwind CSS", "Lenis"],
+      "link": "https://amzngm.github.io/ngm-ae-portfolio/",
+      "images": ["/images/projects/NGM_AE/NGM_AE 1.webp", "/images/projects/NGM_AE/NGM_AE 2.webp", "/images/projects/NGM_AE/NGM_AE 3.webp"],
+      "services": {
+        "type": "Creative Dev",
+        "role": "Web design, Fullstack",
+        "date": "2025-11-20"
+      }
+    },
+    {
+      "title": "Jadar Website",
+      "description": "Interactive web experience with dynamic UI elements, scroll animation, and gesture-based interactions.",
+      "longDescription": "A highly interactive corporate platform featuring custom cursor effects, physics-based UI elements, and complex layout transitions designed to engage and delight the user. Includes comprehensive multi-language support for both English and Arabic audiences with RTL layout optimization.",
+      "stack": ["Next.js", "React 19", "GSAP", "Tailwind CSS", "Lenis", "Lucide Icons", "MapLibre GL JS", "React Map GL"],
+      "link": "https://jadar.vercel.app/",
+      "images": [
+        "/images/projects/Jadar/Jadar 1.webp",
+        "/images/projects/Jadar/Jadar 2.webp",
+        "/images/projects/Jadar/Jadar 3.webp",
+        "/images/projects/Jadar/Jadar 4.webp",
+        "/images/projects/Jadar/Jadar 5.webp",
+        "/images/projects/Jadar/Jadar 6.webp",
+        "/images/projects/Jadar/Jadar 7.webp",
+        "/images/projects/Jadar/Jadar 8.webp",
+        "/images/projects/Jadar/Jadar 9.webp",
+        "/images/projects/Jadar/Jadar 10.webp",
+        "/images/projects/Jadar/Jadar 11.webp",
+        "/images/projects/Jadar/Jadar 12.webp",
+        "/images/projects/Jadar/Jadar 13.webp",
+        "/images/projects/Jadar/Jadar 14.webp",
+        "/images/projects/Jadar/Jadar 15.webp",
+        "/images/projects/Jadar/Jadar 16.webp",
+        "/images/projects/Jadar/Jadar 17.webp",
+        "/images/projects/Jadar/Jadar 18.webp",
+        "/images/projects/Jadar/Jadar 19.webp",
+        "/images/projects/Jadar/Jadar 20.webp",
+        "/images/projects/Jadar/Jadar 21.webp",
+        "/images/projects/Jadar/Jadar 22.webp",
+        "/images/projects/Jadar/Jadar 23.webp",
+        "/images/projects/Jadar/Jadar 24.webp",
+        "/images/projects/Jadar/Jadar 25.webp",
+        "/images/projects/Jadar/Jadar 26.webp",
+        "/images/projects/Jadar/Jadar 27.webp",
+        "/images/projects/Jadar/Jadar 28.webp"
+      ],
+      "languages": ["English", "Arabic"],
+      "services": {
+        "type": "Creative Dev",
+        "role": "Web design, Front End",
+        "date": "2025-09-05"
+      }
+    }
+  ],
+
+  "AUDIO_PROJECTS": [
+    {
+      "id": "nike-air-max-pulse",
+      "title": "Nike AirMaxPulse commercial.",
+      "description": "Nike Sportswear AirMaxPulse 2023 DXB Burj Khalifa commercial.",
+      "credits": "Co-Production, Mixing & Mastering",
+      "role": "Co-Producter, Audio Engineer",
+      "year": "2023",
+      "status": "Completed",
+      "category": "Commercial",
+      "client": "Nike",
+      "mediaUrl": "https://www.instagram.com/reel/CqRMwMRMpPH/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==",
+      "mediaType": "Instagram",
+      "tags": ["music", "recording", "mixing", "mastering"],
+      "image": "/images/logo.jpg"
+    },
+    {
+      "id": "riyad-as-salihin",
+      "title": "Riyad as-Salihin",
+      "description": "Complete audio production for the renowned Islamic book Riyad as-Salihin",
+      "credits": "Voice Over, Vocal Production, Recording, Mixing & Mastering",
+      "role": "Audio Engineer & Voice Artist",
+      "year": "2025",
+      "status": "In Progress",
+      "category": "Audio Book",
+      "client": "NGM",
+      "mediaUrl": "https://www.youtube.com/watch?v=3N2rMwgMXok",
+      "mediaType": "Youtube",
+      "tags": ["audio-book", "voice-over", "vocal-production", "recording", "mixing", "mastering"]
+    },
+    {
+      "id": "azeyzy-elqarea",
+      "title": "Azeyzy Elqarea",
+      "description": "Professional re-recording Azeyzy Elqarea monologue from the Egyptian movie `Rehlat Alnesyan`, using real old analogue tape machines and cassettes to reach vintage sound characteristics",
+      "credits": "Recording, Vocal Production, Voice Over, Mixing & Mastering",
+      "role": "Audio Engineer & Voice Artist",
+      "year": "2025",
+      "status": "Completed",
+      "category": "Monologue",
+      "client": "NGM",
+      "mediaUrl": "https://www.youtube.com/watch?v=OwpsYuwyX7A",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/0htfKI9cCjHrYJ6DGDE7rz?si=c1525495cc064a0a",
+      "tags": ["audio-book", "vocal-production", "recording", "voice-over", "mixing", "mastering"]
+    },
+    {
+      "id": "wadetto-anny-lam-o5laq-analogue",
+      "title": "Wadetto Anny Lam O5laq - Analogue Version",
+      "description": "Analogue version production with vintage sound characteristics",
+      "credits": "Recording, Vocal Production, Voice Over, Mixing & Mastering",
+      "role": "Audio Engineer & Voice Artist",
+      "year": "2025",
+      "status": "Completed",
+      "category": "Monologue",
+      "client": "NGM",
+      "mediaUrl": "https://www.youtube.com/watch?v=oOwWLa45JhU",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/09LWUr5fn8yRQaGspfEQCm?si=64a5eaf898cb420b",
+      "tags": ["audio-book", "analogue", "recording", "voice-over", "mixing", "mastering"]
+    },
+    {
+      "id": "wadetto-anny-lam-o5laq-digital",
+      "title": "Wadetto Anny Lam O5laq - Digital Version",
+      "description": "Digital version with modern production techniques",
+      "credits": "Recording, Vocal Production, Voice Over, Mixing & Mastering",
+      "role": "Audio Engineer & Voice Artist",
+      "year": "2025",
+      "status": "Completed",
+      "category": "Monologue",
+      "client": "NGM",
+      "mediaUrl": "https://www.youtube.com/watch?v=llZ25D7WpBM",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/09LWUr5fn8yRQaGspfEQCm?si=64a5eaf898cb420b",
+      "tags": ["audio-book", "digital", "recording", "voice-over", "mixing", "mastering"]
+    },
+    {
+      "id": "hazeny",
+      "title": "Hazeny",
+      "ft": "DJ Kaboo",
+      "description": "An Egyptian Disco anthem reimagined for the future. Hazeny blends nostalgic Egyptian funk with modern Trap and futuristic Dubstep — a sound that hits harder than anything I’ve dropped before. Inspired by the original track by Hany Shenouda & Ferket El Masryeen.",
+      "credits": "Co-Production, Mixing & Mastering",
+      "role": "Co-Producer & Audio Engineer",
+      "year": "2025",
+      "status": "Completed",
+      "category": "Music, Remix & Edit",
+      "client": "DJ Kaboo",
+      "mediaUrl": "https://www.youtube.com/watch?v=514uY5wAL5c",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/39Yy8I9j7P4xYIXBDS3g7p?si=b4aa2e40ceae4280",
+      "tags": ["co-production", "mixing", "mastering", "arabic-music"],
+      "image": "/images/logo.jpg"
+    },
+    {
+      "id": "amr-diab-wala-ala-balo-2024",
+      "title": "Amr Diab - Wala Ala Balo (2024 Edit)",
+      "ft": "DJ Kaboo",
+      "description": "Modern reinterpretation of Amr Diab's classic hit, Experience the timeless Egyptian hit 'Wala Ala Balo' in a whole new sound with my 2024 Electronic House Edit. This modern twist on Amr Diab's classic track blends the iconic song's rich cultural essence with cutting-edge electronic beats. Get ready to enjoy Amr Diab's masterpiece reimagined for today's music scene.",
+      "credits": "Co-Production, Mixing & Mastering",
+      "role": "Co-Producer & Audio Engineer",
+      "year": "2024",
+      "status": "Completed",
+      "category": "Music, Remix & Edit",
+      "client": "DJ Kaboo",
+      "mediaUrl": "https://www.youtube.com/watch?v=nkC0vvYYHQc",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/58iXtKE26rsmRVVNp9nZzU?si=47397edb4604402a",
+      "tags": ["co-production", "mixing", "mastering", "remix", "amr-diab"],
+      "image": "/images/logo.jpg"
+    },
+    {
+      "id": "yalla-yalla",
+      "title": "Yalla Yalla",
+      "ft": "DJ Kaboo, Yasser Hateb",
+      "description": "Energetic track with traditional infectious rhythms",
+      "credits": "Co-Production, Mixing & Mastering",
+      "role": "Co-Producer & Audio Engineer",
+      "year": "2024",
+      "status": "Completed",
+      "category": "Music, Remix & Edit",
+      "client": "DJ Kaboo",
+      "mediaUrl": "https://www.youtube.com/watch?v=eE9VXk5Utrw",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/5ASi0dj9GMLqfyF9MHIzHc?si=e1ea98746dd24942",
+      "tags": ["co-production", "mixing", "mastering", "energetic"]
+    },
+    {
+      "id": "barsha-barsha",
+      "title": "Barsha Barsha",
+      "ft": "DJ Kaboo",
+      "description": "Upbeat track with catchy hooks, Experience the timeless hit 'Barsha Batrsha ' in a whole new sound with my 2024 House Edit.",
+      "credits": "Co-Production, Mixing & Mastering",
+      "role": "Co-Producer & Audio Engineer",
+      "year": "2024",
+      "status": "Completed",
+      "category": "Music, Remix & Edit",
+      "client": "DJ Kaboo",
+      "mediaUrl": "https://www.youtube.com/watch?v=5LDGtYiDBVY",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/1JyB5V1bv7mjwSk2FpoPmP?si=6cbc91484e2b439f",
+      "tags": ["co-production", "mixing", "mastering", "upbeat"]
+    },
+    {
+      "id": "dalida-salma-ya-salama",
+      "title": "Dalida - Salma Ya Salama (Edit)",
+      "ft": "DJ Kaboo",
+      "description": "Contemporary edit of Dalida's timeless classic, Dive into a sonic blend where Egyptian Folk meets French flair 🎶. My latest video revives a classic - Dalida's '76 hit, rooted in Sayed Darwish's timeless folk song. An electronic journey through an iconic Egyptian/French cultural fusion. Check it out!",
+      "credits": "Co-Production, Mixing & Mastering",
+      "role": "Co-Producer & Audio Engineer",
+      "year": "2023",
+      "status": "Completed",
+      "category": "Music, Remix & Edit",
+      "client": "DJ Kaboo",
+      "mediaUrl": "https://www.youtube.com/watch?v=N-L8BVJETrU",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/1JMoukvGVoBfCe9tImgs5w?si=b486ade8374f49d2",
+      "tags": ["co-production", "mixing", "mastering", "remix", "dalida"]
+    },
+    {
+      "id": "rachid-taha-ya-rayah",
+      "title": "Rachid Taha - Ya Rayah (Edit)",
+      "ft": "DJ Kaboo",
+      "description": "Modern take on Rachid Taha's iconic track, Literally during my vacation in Bali, found an Algerian restaurant around the corner, and while ordering my food heard the original song of 'Ya Rayah by Dahmane El Harrachi'  , which got me inspired to add my touch to this legendary song, and add it to my (ARAB TRAP EP.2). Hope y'all gonna like it!",
+      "credits": "Co-Production, Mixing & Mastering",
+      "role": "Co-Producer & Audio Engineer",
+      "year": "2023",
+      "status": "Completed",
+      "category": "Music, Remix & Edit",
+      "client": "DJ Kaboo",
+      "mediaUrl": "https://www.youtube.com/watch?v=li-pQ3ZwKiY",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/1KVpa83fBkART0ZZuRb3Bt?si=f24d0df82d734242",
+      "tags": ["co-production", "mixing", "mastering", "remix", "rachid-taha"]
+    },
+    {
+      "id": "shaka",
+      "title": "SHAKA",
+      "ft": "DJunkie",
+      "description": "A middle eastern alternative electronic beats.",
+      "credits": "Co-Production",
+      "role": "Co-Producer",
+      "year": "2023",
+      "status": "Completed",
+      "category": "Music Production",
+      "client": "DJunkie",
+      "mediaUrl": "https://www.youtube.com/embed/_nqlsVzPmBw?si=7EQU9x8x3UPGy0VN",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/5IAKu92Xc25BF9O2zY65Ww?si=1a95dba24fa74733",
+      "tags": ["co-production", "DJunkie", "shaka"],
+      "image": "/images/logo.jpg"
+    },
+    {
+      "id": "laa-laa-arab-trap-9",
+      "title": "LAA LAA",
+      "ft": "DJ Kaboo, DJunkie, Akthedj",
+      "description": "installment in the popular Arab Trap series",
+      "credits": "Co-Production, Mixing & Mastering",
+      "role": "Co-Producer & Audio Engineer",
+      "year": "2023",
+      "status": "Completed",
+      "category": "Music Production",
+      "client": "DJ Kaboo, DJunkie, Akthedj",
+      "mediaUrl": "https://www.youtube.com/watch?v=ZOzI3itu1v4",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/4zvYISVm0WguiqvowxPO5e?si=dc9ef18a60de48ef",
+      "tags": ["co-production", "mixing", "mastering", "arab-trap", "series"]
+    },
+    {
+      "id": "haramt",
+      "title": "Haramt",
+      "ft": "DJunkie",
+      "description": "A middle eastern alternative electronic beats.",
+      "credits": "Co-Production",
+      "role": "Co-Producer",
+      "year": "2023",
+      "status": "Completed",
+      "category": "Music Production",
+      "client": "DJunkie",
+      "mediaUrl": "https://www.youtube.com/embed/fdArK4N92Wo?si=M11pQrCbESaNMJNW",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/1pGv7TFORXW8IE3x9ecYky?si=f3df395d95104096",
+      "tags": ["co-production", "DJunkie", "haramt"],
+      "image": "/images/logo.jpg"
+    },
+    {
+      "id": "asfour",
+      "title": "ASFOUR",
+      "ft": "DJunkie",
+      "description": "A middle eastern alternative electronic beats.",
+      "credits": "Co-Production",
+      "role": "Co-Producer",
+      "year": "2023",
+      "status": "Completed",
+      "category": "Music Production",
+      "client": "DJunkie",
+      "mediaUrl": "https://www.youtube.com/embed/GjkT9ErWQwo?si=qGg7vIW21OSOO_JY",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/0ccXdaW7yBxRj9O3FXSzAk?si=59f1058f90064673",
+      "tags": ["co-production", "DJunkie", "asfour"],
+      "image": "/images/logo.jpg"
+    },
+    {
+      "id": "fairuz-nassam-alayna-al-hawa",
+      "title": "Fairuz - Nassam Alayna Al Hawa (Edit)",
+      "ft": "DJ Kaboo",
+      "description": "Contemporary edit of Fairuz's beloved classic, After the massive recognition I received on my (Arab Trap - EP.1), and two of my tracks have been featured on (Moon Knight) by Marvel. I'm excited to announce my first release of my upcoming (Arab Trap EP.2)",
+      "credits": "Co-Production, Mixing & Mastering",
+      "role": "Co-Producer & Audio Engineer",
+      "year": "2022",
+      "status": "Completed",
+      "category": "Music, Remix & Edit",
+      "client": "DJ Kaboo",
+      "mediaUrl": "https://www.youtube.com/watch?v=Y4MzP3-BOLY",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/1WzCTw3PIv4oWwxW57VIbW?si=e57c9ecd4e6541dc",
+      "tags": ["co-production", "mixing", "mastering", "remix", "fairuz"],
+      "image": "/images/logo.jpg"
+    },
+    {
+      "id": "1001-nights-arab-trap-7",
+      "title": "1001 Nights - Arab Trap 7",
+      "ft": "DJ Kaboo",
+      "description": "Collaborative production blending Arabic melodies with trap beats with DJ Kaboo to Translating our Middle Eastern Culture into a Trap Wav!",
+      "credits": "Co-Production, Mixing & Mastering",
+      "role": "Co-Producer & Audio Engineer",
+      "year": "2021",
+      "status": "Completed",
+      "category": "Music, Remix & Edit",
+      "client": "DJ Kaboo",
+      "mediaUrl": "https://www.youtube.com/watch?v=9neYwVbxe3A",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/4DCK5YHMA1ksHN43AmSyKV?si=f13eb1238b264ad5",
+      "tags": ["co-production", "mixing", "mastering", "arab-trap", "collaboration"]
+    },
+    {
+      "id": "emsallam-bala-dope",
+      "title": "Bala Dope ft. Synaptik",
+      "ft": "Emsallam, Synaptik",
+      "description": "Full production for Emsallam's collaboration with Synaptik",
+      "credits": "Production, Mixing & Mastering",
+      "role": "Producer & Audio Engineer",
+      "year": "2021",
+      "status": "Completed",
+      "category": "Music Production",
+      "client": "Emsallam",
+      "mediaUrl": "https://www.youtube.com/watch?v=OFXr4c0OfDk",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/0JlmbUVk9Jp3MeA97MZeE2?si=57cb272e717245e4",
+      "tags": ["production", "mixing", "mastering", "emsallam", "collaboration"]
+    },
+    {
+      "id": "emsallam-dorar",
+      "title": "Dorar",
+      "ft": "Emsallam",
+      "description": "Complete audio production for Emsallam's track 'Dorar'",
+      "credits": "Production, Mixing & Mastering",
+      "role": "Producer & Audio Engineer",
+      "year": "2021",
+      "status": "Completed",
+      "category": "Music Production",
+      "client": "Emsallam",
+      "mediaUrl": "https://www.youtube.com/watch?v=yDZyIRtyXBk",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/3VMkU7hTLgKypxJdoVbNLh?si=b6b40aa461204be7",
+      "tags": ["production", "mixing", "mastering", "emsallam"]
+    },
+    {
+      "id": "emsallam-wala-khatar",
+      "title": "Wala Khatar Ala Bali",
+      "ft": "Emsallam, Tamer Nafar",
+      "description": "Beat production for Emsallam's collaboration with Tamer Nafar",
+      "credits": "Production",
+      "role": "Producer",
+      "year": "2021",
+      "status": "Completed",
+      "category": "Beat Production",
+      "client": "Emsallam (ft. Tamer Nafar)",
+      "mediaUrl": "https://www.youtube.com/watch?v=tNOIeqZphRM",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/6eDOBTOyKXq8UmFpPmzKjg?si=c87940438d1f4d08",
+      "tags": ["production", "beat-making", "emsallam", "tamer-nafar", "collaboration"]
+    },
+    {
+      "id": "abyusif-system",
+      "title": "System",
+      "description": "Full production for Abyusif's track 'System'",
+      "credits": "Production, Mixing & Mastering",
+      "role": "Producer & Audio Engineer",
+      "year": "2020",
+      "status": "Completed",
+      "category": "Music Production",
+      "client": "Abyusif",
+      "mediaUrl": "https://www.youtube.com/watch?v=LROn94E1Mv0",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/4Tlf9RHnLReu7pixF3wO9w?si=eb9261d972cd45c0",
+      "tags": ["production", "mixing", "mastering", "abyusif", "full-production"]
+    },
+    {
+      "id": "abyusif-aala-maydoub-eltagl",
+      "title": "Aala Maydoub Eltagl",
+      "description": "Beat production for Abyusif's track",
+      "credits": "Production",
+      "role": "Producer",
+      "year": "2020",
+      "status": "Completed",
+      "category": "Beat Production",
+      "client": "Abyusif",
+      "mediaUrl": "https://www.youtube.com/watch?v=YNiXFCUxFIc",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/4dNqCpt1EMyQQYg3gIZ8o3?si=ec8eb47ec04048c5",
+      "tags": ["production", "beat-making", "abyusif"]
+    },
+    {
+      "id": "abyusif-wala",
+      "title": "WALA",
+      "description": "Beat production for Abyusif's track 'WALA'",
+      "credits": "Production",
+      "role": "Producer",
+      "year": "2020",
+      "status": "Completed",
+      "category": "Beat Production",
+      "client": "Abyusif",
+      "mediaUrl": "https://www.youtube.com/watch?v=gkTYut8Gurs",
+      "mediaType": "Youtube",
+      "spotifyLink": "https://open.spotify.com/track/2z9NEr25rhTMcQCPHIE7u7?si=a76e29981a164de7",
+      "tags": ["production", "beat-making", "abyusif"]
+    }
+  ]
+}

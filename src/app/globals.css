@@ -1,15 +1,19 @@
-@import 'locomotive-scroll/dist/locomotive-scroll.css';
 @import 'tailwindcss';
 @theme {
-  --color-main: #614f72;
-  --color-bg: #0d0b0e;
-  --color-text: #fff;
+  --color-main: #ffde02;
+  --color-bg: #0d0d0d;
+  --color-text: #f6f9fa;
 
   --font-sec: var(--font-sec);
+  --font-wide: var(--font-wide);
+  --font-arab: var(--font-wide);
 }
 * {
   box-sizing: border-box;
 }
 html {
   scrollbar-width: none;
+}
+body:has(.hide-nav) nav {
+  display: none;
 }

@@ -1,78 +1,43 @@
 import './globals.css'
 import localFont from 'next/font/local'
+import { Cairo, IBM_Plex_Mono } from 'next/font/google'
 import AppWrapper from '@/components/app-components/AppWrapper'
 
-export const satoshi_font = localFont({
+export const main_font = localFont({
   src: [
     {
-      path: '../../public/fonts/Satoshi/Satoshi-Variable.woff2',
-      weight: '100 900',
-      style: 'normal',
-    },
-    {
-      path: '../../public/fonts/Satoshi/Satoshi-VariableItalic.woff2',
-      weight: '100 900',
-      style: 'italic',
-    },
-    {
-      path: '../../public/fonts/Satoshi/Satoshi-Light.woff2',
-      weight: '300',
-      style: 'normal',
-    },
-    {
-      path: '../../public/fonts/Satoshi/Satoshi-LightItalic.woff2',
-      weight: '300',
-      style: 'italic',
-    },
-    {
-      path: '../../public/fonts/Satoshi/Satoshi-Regular.woff2',
+      path: '../../public/fonts/helvetica/Helvetica.ttf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../../public/fonts/Satoshi/Satoshi-Italic.woff2',
-      weight: '400',
-      style: 'italic',
-    },
-    {
-      path: '../../public/fonts/Satoshi/Satoshi-Medium.woff2',
-      weight: '500',
-      style: 'normal',
-    },
-    {
-      path: '../../public/fonts/Satoshi/Satoshi-MediumItalic.woff2',
-      weight: '500',
-      style: 'italic',
-    },
-    {
-      path: '../../public/fonts/Satoshi/Satoshi-Bold.woff2',
+      path: '../../public/fonts/helvetica/Helvetica-Bold.ttf',
       weight: '700',
       style: 'normal',
-    },
-    {
-      path: '../../public/fonts/Satoshi/Satoshi-BoldItalic.woff2',
-      weight: '700',
-      style: 'italic',
-    },
-    {
-      path: '../../public/fonts/Satoshi/Satoshi-Black.woff2',
-      weight: '900',
-      style: 'normal',
-    },
-    {
-      path: '../../public/fonts/Satoshi/Satoshi-BlackItalic.woff2',
-      weight: '900',
-      style: 'italic',
     },
   ],
   display: 'swap',
   variable: '--font-main',
 })
 
-export const monor_font = localFont({
-  src: '../../public/fonts/monor/Monor_Regular.otf',
-  variable: '--font-sec',
+export const sec_font = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
+  variable: '--font-sec',
+})
+
+export const wide_font = localFont({
+  src: '../../public/fonts/Franchise.ttf',
+  display: 'swap',
+  variable: '--font-wide',
+})
+
+export const arab_font = Cairo({
+  subsets: ['arabic'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-arab',
 })
 
 export const metadata = {
@@ -120,7 +85,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/NGM-CORRPRET.png',
+        url: '/images/NGM-CORRPRET.webp',
         width: 1200,
         height: 630,
         alt: 'Abdulrahman NGM - Creative Frontend Developer',
@@ -137,10 +102,10 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${satoshi_font.className} ${monor_font.variable}`}>
+    <html lang="en" className={`${main_font.className} ${sec_font.variable} ${wide_font.variable} ${arab_font.variable}`}>
       <body
         suppressHydrationWarning
-        className="relative w-full h-full bg-bg selection:bg-main text-text antialiased md:subpixel-antialiased scroll-smooth"
+        className="relative w-full h-full bg-bg selection:bg-main text-text selection:text-bg antialiased md:subpixel-antialiased scroll-smooth"
       >
         <AppWrapper>{children}</AppWrapper>
       </body>
