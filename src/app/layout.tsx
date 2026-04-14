@@ -118,6 +118,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="preload" href="/images/projects/aymon/aymon-gif-3.gif" as="image" type="image/gif" />
+        <link rel="preload" href="/images/ngm-red.webp" as="image" type="image/webp" />
       </head>
       <body
         suppressHydrationWarning
