@@ -77,7 +77,7 @@ export const metadata = {
   },
 
   openGraph: {
-    title: 'Abdulrahman NGM – Creative Frontend Developer',
+    title: 'NGM – Creative Frontend Developer',
     description: 'Creative frontend developer building motion-driven web experiences with React, Next.js, GSAP, and Framer Motion.',
     url: 'https://ngm-lemon.vercel.app/',
     siteName: 'Abdulrahman NGM Portfolio',
@@ -88,14 +88,14 @@ export const metadata = {
         url: '/images/NGM-CORRPRET.webp',
         width: 1200,
         height: 630,
-        alt: 'Abdulrahman NGM - Creative Frontend Developer',
+        alt: 'NGM - Creative Frontend Developer',
       },
     ],
   },
 
   twitter: {
     card: 'summary_large_image',
-    title: 'Abdulrahman NGM – Creative Frontend Developer',
+    title: 'NGM – Creative Frontend Developer',
     description: 'Creative frontend developer specializing in interactive and motion-driven websites.',
   },
 }
