@@ -31,9 +31,16 @@ export default function SkillsSection() {
                   as="span"
                   delay={delay + 0.2}
                   key={index}
-                  className="opacity-60 font-sec font-bold text-[3dvw] md:text-[0.75dvw] hover:text-main scale-x-125 origin-left cursor-default"
+                  className="opacity-60 font-sec font-bold text-[3dvw] md:text-[0.75dvw] hover:text-main indent-1 scale-x-125 origin-left cursor-default"
                 >
-                  .{item}
+                  {typeof item === 'string' ? (
+                    <>.{item}</>
+                  ) : (
+                    <>
+                      <span>.{item.name}</span>
+                      {item.details && <span className="block indent-4 mt-2">{item.details}</span>}
+                    </>
+                  )}
                 </AnimText>
               ))}
             </div>

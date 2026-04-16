@@ -51,7 +51,18 @@
     },
     {
       "category": "UI/UX & Design",
-      "items": ["Figma", "DaVinci Resolve", "Design Systems (Fluid Scaling, Responsive Tokens)"]
+      "items": [
+        {
+          "name": "Figma"
+        },
+        {
+          "name": "DaVinci Resolve"
+        },
+        {
+          "name": "Design Systems",
+          "details": "Fluid Scaling, Responsive Tokens"
+        }
+      ]
     }
   ],
 
