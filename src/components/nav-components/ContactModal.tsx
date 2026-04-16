@@ -86,9 +86,13 @@ export default function ContactModal() {
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                   exit={{ opacity: 0, y: 28, filter: 'blur(10px)' }}
                   transition={{ delay: 0.06, duration: 0.6342, ease: easings.cubiz, filter: { delay: 0.674, duration: 0.342 } }}
-                  className="flex justify-between items-start gap-4 mb-6 shrink-0"
+                  className="flex justify-between items-center mb-6"
                 >
-                  <AnimText as="h2" delay={0.5} className="blur-[1.2px] font-sec font-semibold text-xl uppercase tracking-widest">
+                  <AnimText
+                    as="h2"
+                    delay={0.5}
+                    className="blur-[1.2px] font-sec font-semibold text-lg md:text-xl uppercase tracking-widest"
+                  >
                     Reach_out
                   </AnimText>
 
@@ -117,13 +121,13 @@ export default function ContactModal() {
                           onClick={() => click()}
                           target={item.href.startsWith('http') ? '_blank' : undefined}
                           rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                          className="group flex gap-4 hover:bg-bg/8 blur-[0.8px] hover:blur-none rounded-2xl transition-all duration-200 px-2 py-1"
+                          className="group flex justify-between hover:bg-bg/8 blur-[0.8px] hover:blur-none rounded-2xl hover:text-main uppercase px-2 py-1"
                         >
-                          <AnimText delay={0.1 * i} className="flex-1 group-hover:text-main uppercase scale-x-140 scale-y-90 origin-left">
+                          <AnimText delay={0.1 * i} className="max-md:text-sm scale-x-140 scale-y-90 origin-left">
                             {item.text}
                           </AnimText>
 
-                          <Plus size={16} strokeWidth={1.5} className="group-hover:text-main group-hover:rotate-70 duration-300" />
+                          <Plus size={16} strokeWidth={1.5} className="group-hover:rotate-70 duration-300" />
                         </a>
                       </motion.li>
                     )

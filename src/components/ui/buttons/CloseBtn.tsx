@@ -13,7 +13,7 @@ export default function CloseBtn({ onClick, className }: { onClick: () => void; 
         onClick()
       }}
       onMouseEnter={() => hoverSound()}
-      className={`hover:opacity-75 blur-[0.5px] hover:blur-none font-wide max-md:text-main hover:text-main text-sm uppercase tracking-wide scale-x-325 scale-y-130 pe-2 cursor-pointer ${className}`}
+      className={`hover:opacity-75 blur-[0.5px] hover:blur-none font-wide max-md:text-main hover:text-main text-xs md:text-sm uppercase tracking-wide scale-x-325 scale-y-130 pe-2 cursor-pointer ${className}`}
     >
       Close
     </AnimText>
