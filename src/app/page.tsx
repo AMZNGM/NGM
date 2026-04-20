@@ -6,7 +6,7 @@ import Hero from '@/components/home-components/Hero'
 import Footer from '@/components/footer.components/Footer'
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://ngm-lemon.vercel.app/'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://amzngm.com/'),
 
   title: {
     default: '_N G M | Creative Developer',
@@ -22,13 +22,13 @@ export const metadata = {
   creator: 'Abdulrahman NGM',
 
   alternates: {
-    canonical: 'https://ngm-lemon.vercel.app/',
+    canonical: 'https://amzngm.com/',
   },
 
   openGraph: {
     title: 'NGM – Creative Frontend Developer',
     description: 'Creative frontend developer building motion-driven web experiences with React, Next.js, GSAP, and Framer Motion.',
-    url: 'https://ngm-lemon.vercel.app/',
+    url: 'https://amzngm.com/',
     siteName: 'Abdulrahman NGM Portfolio',
     locale: 'en_US',
     type: 'website',

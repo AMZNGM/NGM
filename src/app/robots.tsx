@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://ngm-lemon.vercel.app/sitemap.xml',
+    sitemap: 'https://amzngm.com/sitemap.xml',
   }
 }
