@@ -8,7 +8,7 @@
 
 <div align="center">
   <h3>Exploring the intersection of design, code, and 3D experiences.</h3>
-  <p><strong>[🌎 Live Portfolio: ngm-lemon.vercel.app](https://ngm-lemon.vercel.app/)</strong></p>
+  <p><strong>[🌎 Live Portfolio: amzngm.com](https://amzngm.com/)</strong></p>
 </div>
 
 ---
