@@ -27,19 +27,19 @@
     },
     {
       "category": "Animation & Interaction",
-      "items": ["GSAP", "Framer Motion", "React Spring"]
+      "items": ["GSAP", "Framer Motion"]
     },
     {
       "category": "3D & WebGL",
-      "items": ["Three.js", "React Three Fiber (R3F)", "React Three Drei"]
+      "items": ["Three.js", "React Three Fiber (R3F)", "Drei"]
     },
     {
       "category": "Styling",
-      "items": ["Tailwind CSS", "SCSS", "Bootstrap"]
+      "items": ["Tailwind CSS", "Bootstrap"]
     },
     {
-      "category": "Backend",
-      "items": ["Firebase", "Supabase"]
+      "category": "Services & Integrations",
+      "items": ["Firebase", "Supabase", "Zustand", "React Email", "Resend"]
     },
     {
       "category": "Tools & Deployment",
@@ -47,7 +47,7 @@
     },
     {
       "category": "Advanced UI / Experience",
-      "items": ["Lenis", "Locomotive Scroll", "Swapy", "Howler.js"]
+      "items": ["Lenis", "Locomotive Scroll", "Swapy", "use-sound", "Howler.js"]
     },
     {
       "category": "UI/UX & Design",
@@ -60,7 +60,7 @@
         },
         {
           "name": "Design Systems",
-          "details": "Fluid Scaling, Responsive Tokens"
+          "details": "Fluid Scaling, Responsive"
         }
       ]
     }
