@@ -43,7 +43,7 @@
     },
     {
       "category": "Tools & Deployment",
-      "items": ["Git", "GitHub", "Vercel", "Cloudinary"]
+      "items": ["Git", "GitHub", "Vercel", "Cloudflare", "Cloudinary"]
     },
     {
       "category": "Advanced UI / Experience",
