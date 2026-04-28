@@ -12,7 +12,7 @@
   },
 
   "CONTACT": [
-    { "href": "mailto:ngm@amzngm.com", "text": "Mail (ngm@amzngm.com)" },
+    { "href": "mailto:contact@amzngm.com", "text": "Mail (contact@amzngm.com)" },
     { "href": "https://github.com/AMZNGM", "text": "GitHub" },
     { "href": "https://www.linkedin.com/in/amzngm/", "text": "LinkedIn" },
     { "href": "tel:+201014722872", "text": "Whats App" },
