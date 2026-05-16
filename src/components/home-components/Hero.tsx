@@ -54,7 +54,7 @@ export default function Hero() {
                   transition: { duration: 0.7, ease: [0.32, 0, 0.67, 0] },
                 }}
               >
-                <AnimIn center blur delay={2} className="size-full">
+                <AnimIn center blur delay={2} className="max-md:h-152 size-full">
                   <Suspense fallback={null}>
                     <IntroScene />
                   </Suspense>
