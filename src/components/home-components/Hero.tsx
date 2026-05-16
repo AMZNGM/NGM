@@ -10,7 +10,7 @@ import MoodsToggle from '@/components/home-components/MoodsToggle'
 import AboutSection from '@/components/home-components/AboutSection'
 import SkillsSection from '@/components/home-components/SkillsSection'
 import HeroCenter from '@/components/home-components/HeroCenter'
-import IntroScene from '@/components/home-components/IntroScene'
+import GlassBall from '@/components/home-components/GlassBall'
 import ProjectsList from '@/components/home-components/ProjectsList'
 import { Suspense } from 'react'
 
@@ -57,7 +57,7 @@ export default function Hero() {
               >
                 <AnimIn center blur delay={2} className="max-md:h-100 md:max-h-[83dvh] size-full">
                   <Suspense fallback={null}>
-                    <IntroScene />
+                    <GlassBall />
                   </Suspense>
                 </AnimIn>
               </motion.div>

@@ -136,8 +136,8 @@ const Scene: FC = () => {
             </mesh>
 
             <mesh>
-              <sphereGeometry args={[0.5, 16, 16]} />
-              <meshStandardMaterial color={0xffde02} emissive={0x555555} roughness={0.5} />
+              <sphereGeometry args={[0.4, 16, 16]} />
+              <meshStandardMaterial color={0xffd302} emissive={0xffde02} roughness={0.5} />
             </mesh>
           </RigidBody>
 
@@ -185,7 +185,7 @@ const Model: FC = () => {
   )
 }
 
-export default function IntroScene() {
+export default function GlassBall() {
   const [frameloop, setFrameloop] = useState<'never' | 'always'>('never')
 
   return (
