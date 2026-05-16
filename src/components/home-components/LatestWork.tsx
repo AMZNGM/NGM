@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { useSoundEffects } from '@/hooks/useSoundEffects'
-import { List } from 'lucide-react'
 import AnimIn from '@/components/ui/unstyled/AnimIn'
 import GooeySvgFilter from '@/components/ui/effects/GooeySvgFilter'
 import WorkSkeleton from '@/components/ui/loaders/WorkSkeleton'
@@ -91,7 +90,9 @@ export default function LatestWork() {
             onMouseDown={() => click()}
             className={`p-1 md:p-2 rounded-sm cursor-pointer ${viewMode === 'list' ? 'bg-main/65 hover:text-main' : ''}`}
           >
-            <List className="size-3" />
+            <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
           </motion.button>
         </div>
       </div>

@@ -5,7 +5,6 @@ import { useCallback, useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useSoundEffects } from '@/hooks/useSoundEffects'
 import { easings } from '@/utils/anim'
-import { Info } from 'lucide-react'
 import AnimText from '@/components/ui/unstyled/AnimText'
 import CloseBtn from '@/components/ui/buttons/CloseBtn'
 
@@ -45,7 +44,14 @@ export default function MoreInfoModal({ moreInfo, projectTitle }: { moreInfo: st
         className="group bg-text/10 hover:bg-main/20 opacity-80 hover:opacity-100 rounded-lg outline-none text-text hover:text-main px-[0.8dvw] max-md:px-[2dvw] py-[0.5dvw] max-md:py-[1.5dvw] cursor-pointer"
       >
         <div className="flex items-center gap-[0.5dvw] max-md:gap-[1dvw] font-wide text-[0.9dvw] max-md:text-[3.5dvw] uppercase scale-x-160 origin-left">
-          <Info className="size-[0.9dvw] max-md:size-[3dvw] group-hover:rotate-12" />
+          <svg fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-4">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+            />
+          </svg>
+
           <span>More Info</span>
         </div>
       </motion.button>

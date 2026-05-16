@@ -1,245 +1,18 @@
 'use client'
 
-import React, { cloneElement, FC, ReactElement, useEffect, useRef, PropsWithChildren, useMemo, useState, useCallback } from 'react'
-
-import { Group, Vector2, Vector3, DoubleSide, MeshPhysicalMaterial } from 'three'
+import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react'
+import { DoubleSide, Group, Mesh, MeshPhysicalMaterial, Object3D, Vector3 } from 'three'
 import { WebGPURenderer } from 'three/webgpu'
-import { PostProcessing } from 'three/webgpu'
-import { pass, uniform } from 'three/tsl'
-import { bloom } from 'three/addons/tsl/display/BloomNode.js'
-
-import { Canvas, useThree, useFrame } from '@react-three/fiber'
-import { Environment, useGLTF } from '@react-three/drei'
+import { Canvas, useFrame } from '@react-three/fiber'
+import { Environment, OrbitControls, useGLTF } from '@react-three/drei'
 import { Physics, RapierRigidBody, RigidBody } from '@react-three/rapier'
-import { addEventListener, scoped, vevet, lerp, Raf } from 'vevet'
 
-const rotation = Math.PI * 0.6
-const parallax = 2.5
-const bloomSettings = {
-  strength: uniform(0.01),
-  radius: uniform(0.5),
-  threshold: uniform(0.5),
-}
-type Listener = (value: boolean) => void
-let granted = false
-let listeners: Listener[] = []
-
-function useAnimatableVec3(onUpdateProp: (vec3: Vector3) => void, easeProp = 0.1, frictionProp = easeProp * 2.5) {
-  const targetRef = useRef<Vector3>(new Vector3(0, 0, 0))
-  const currentRef = useRef<Vector3>(new Vector3(0, 0, 0))
-
-  const onUpdate = useRef(onUpdateProp)
-
-  useEffect(() => {
-    const raf = new Raf()
-    raf.play()
-
-    raf.on('frame', () => {
-      const target = targetRef.current
-      const { current } = currentRef
-
-      const ease = raf.lerpFactor(easeProp)
-      const friction = raf.lerpFactor(frictionProp)
-
-      target.x = lerp(target.x, 0, friction)
-      target.y = lerp(target.y, 0, friction)
-      target.z = lerp(target.z, 0, friction)
-
-      current.x = lerp(current.x, target.x, ease)
-      current.y = lerp(current.y, target.y, ease)
-      current.z = lerp(current.z, target.z, ease)
-
-      onUpdate.current(current)
-    })
-
-    return () => raf.destroy()
-  }, [easeProp, frictionProp])
-
-  const iterateTarget = useCallback((vec3: Vector3) => {
-    targetRef.current.x += vec3.x
-    targetRef.current.y += vec3.y
-    targetRef.current.z += vec3.z
-  }, [])
-
-  return { iterateTarget }
-}
-
-function useDeviceOrientationDelta(onUpdate: (coords: { alpha: number; gamma: number; beta: number }) => void) {
-  const { granted } = useDeviceOrientationGranted()
-
-  const prevRef = useRef<{
-    alpha: number
-    gamma: number
-    beta: number
-  }>({ alpha: 0, beta: 0, gamma: 0 })
-
-  const handle = useEvent((evt: DeviceOrientationEvent) => {
-    const a = evt.alpha || 0
-    const g = evt.gamma || 0
-    const b = evt.beta || 0
-
-    const alphaDiff = a - prevRef.current.alpha
-    const betaDiff = b - prevRef.current.beta
-    const gammaDiff = g - prevRef.current.gamma
-
-    prevRef.current = { alpha: a, beta: b, gamma: g }
-
-    onUpdate({ alpha: alphaDiff, gamma: gammaDiff, beta: betaDiff })
-  })
-
-  useEffect(() => {
-    if (!granted) {
-      return undefined
-    }
-
-    window.addEventListener('deviceorientation', handle)
-
-    return () => {
-      window.removeEventListener('deviceorientation', handle)
-    }
-  }, [granted, handle])
-}
-
-function useDeviceOrientationGranted() {
-  const [value, setValue] = useState(granted)
-  const [needsPermission, setNeedsPermission] = useState(false)
-
-  const request = useEvent(() => {
-    if (!needsPermission) {
-      return
-    }
-
-    window.DeviceOrientationEvent.requestPermission()
-      .then((result) => {
-        granted = result === 'granted'
-
-        if (granted) {
-          listeners.forEach((l) => l(granted))
-        }
-      })
-      .catch(() => setNeedsPermission(false))
-  })
-
-  useEffect(() => {
-    const hasRequest = 'DeviceOrientationEvent' in window && typeof window.DeviceOrientationEvent.requestPermission === 'function'
-
-    if (!hasRequest) {
-      setValue(true)
-
-      return undefined
-    }
-
-    if (granted) {
-      setValue(true)
-      setNeedsPermission(false)
-
-      return undefined
-    }
-
-    setValue(false)
-    setNeedsPermission(true)
-
-    const listener: Listener = (next) => {
-      setNeedsPermission(false)
-      setValue(next)
-    }
-
-    listeners.push(listener)
-
-    return () => {
-      listeners = listeners.filter((l) => l !== listener)
-    }
-  }, [])
-
-  return { granted: value, needsPermission, request }
-}
-
-function useMouseMoveDelta(onUpdateProp: (delta: Vector2) => void) {
-  const prevMouseRef = useRef<Vector2>(new Vector2(NaN, NaN))
-
-  useEffect(
-    () =>
-      addEventListener(window, 'mousemove', (evt) => {
-        const prev = prevMouseRef.current
-
-        const x = scoped(evt.clientX, vevet.width / 2, vevet.width)
-        const y = scoped(evt.clientY, vevet.height / 2, vevet.height)
-
-        if (Number.isNaN(prev.x) || Number.isNaN(prev.y)) {
-          prev.x = x
-          prev.y = y
-        }
-
-        const dx = x - prev.x
-        const dy = y - prev.y
-
-        prev.x = x
-        prev.y = y
-
-        onUpdateProp(new Vector2(dx, dy))
-      }),
-    [onUpdateProp]
-  )
-}
-
-function useScreenPositionDelta(onUpdateProp: (delta: Vector2) => void) {
-  const prevScreenRef = useRef<Vector2>(new Vector2(NaN, NaN))
-  const isResizedRef = useRef(false)
-  const resizeTimeoutRef = useRef<ReturnType<typeof setTimeout>>(null)
-
-  useFrame(() => {
-    const prev = prevScreenRef.current
-
-    const x = window.screenX / (window.screen.width / 2)
-    const y = window.screenY / (window.screen.height / 2)
-
-    if (Number.isNaN(prev.x) || Number.isNaN(prev.y)) {
-      prev.x = x
-      prev.y = y
-    }
-
-    const dx = x - prev.x
-    const dy = y - prev.y
-
-    prev.x = x
-    prev.y = y
-
-    if (!isResizedRef.current) {
-      onUpdateProp(new Vector2(dx, dy))
-    }
-  })
-
-  useEffect(
-    () =>
-      addEventListener(window, 'resize', () => {
-        isResizedRef.current = true
-
-        if (resizeTimeoutRef.current) {
-          clearTimeout(resizeTimeoutRef.current)
-        }
-
-        resizeTimeoutRef.current = setTimeout(() => {
-          isResizedRef.current = false
-        }, 100)
-      }),
-    []
-  )
-}
-
-const useEvent: {
-  <TF extends ((...args: Array<any>) => any) | undefined>(callback: TF): TF
-  <TF extends ((...args: Array<any>) => any) | undefined>(callback: TF): any
-} = (callback) => {
-  const callbackRef = useRef(callback)
-
-  useEffect(() => {
-    callbackRef.current = callback
-  }, [callback])
-
-  return useCallback((...args: any) => callbackRef.current?.(...args), [])
-}
-
-const material = new MeshPhysicalMaterial({
+const ROTATION_MULTIPLIER = Math.PI * 0.6
+const PARALLAX_STRENGTH = 4.5
+const EASE = 0.02
+const FRICTION = 0.1
+const MODEL_PATH = '/3dmodal/model.glb'
+const glassMaterial = new MeshPhysicalMaterial({
   color: 0xeeefff,
   emissive: 0xffffff90,
   reflectivity: 0.2,
@@ -256,60 +29,117 @@ const material = new MeshPhysicalMaterial({
 
 const Scene: FC = () => {
   const groupRef = useRef<Group>(null)
+  const pointerBodyRef = useRef<RapierRigidBody>(null)
+  const rotTarget = useRef(new Vector3())
+  const rotCurrent = useRef(new Vector3())
+  const posTarget = useRef(new Vector3())
+  const posCurrent = useRef(new Vector3())
+  const ptrTarget = useRef(new Vector3())
+  const ptrCurrent = useRef(new Vector3())
+  const scratchPtr = useRef(new Vector3())
+  const prevMouse = useRef({ x: NaN, y: NaN })
+  const reduced = useRef(false)
 
-  const { iterateTarget: iteratePositionTarget } = useAnimatableVec3(
-    ({ x, y }) => {
-      const group = groupRef.current!
+  useEffect(() => {
+    reduced.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduced.current) return
 
-      group.position.set(x, -y, 0)
-    },
-    0.02,
-    0.1
-  )
+    const onMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth) * 2 - 1
+      const y = (e.clientY / window.innerHeight) * 2 - 1
+      const prev = prevMouse.current
 
-  const { iterateTarget: iterateRotationTarget } = useAnimatableVec3(
-    ({ x, y, z }) => {
-      const group = groupRef.current!
+      if (isNaN(prev.x)) {
+        prev.x = x
+        prev.y = y
+      }
 
-      group.rotation.set(y * rotation, x * rotation, z * rotation)
-    },
-    0.02,
-    0.1
-  )
+      const dx = x - prev.x
+      const dy = y - prev.y
+      prev.x = x
+      prev.y = y
 
-  useMouseMoveDelta(({ x, y }) => {
-    const vec = new Vector3(x, y, 0)
+      rotTarget.current.x += dx
+      rotTarget.current.y += dy
+      posTarget.current.x += dx
+      posTarget.current.y += dy
+      ptrTarget.current.x += dx
+      ptrTarget.current.y += dy
+    }
 
-    iteratePositionTarget(vec)
-    iterateRotationTarget(vec)
-  })
+    window.addEventListener('mousemove', onMouseMove)
+    return () => window.removeEventListener('mousemove', onMouseMove)
+  }, [])
 
-  useScreenPositionDelta(({ x, y }) => {
-    const strength = 5
-    const vec = new Vector3(-x * strength, -y * strength, 0)
+  useEffect(() => {
+    if (reduced.current) return
 
-    iteratePositionTarget(vec)
-    iterateRotationTarget(vec)
-  })
+    const onOrientation = (e: DeviceOrientationEvent) => {
+      const g = e.gamma ?? 0
+      const b = e.beta ?? 0
 
-  useDeviceOrientationDelta(({ gamma, beta }) => {
-    const rotationStrength = 0.05
-    const rotationVector = new Vector3(gamma * rotationStrength, beta * rotationStrength, 0)
+      rotTarget.current.x += g * 0.05
+      rotTarget.current.y += b * 0.05
+      posTarget.current.x += g * 0.075
+      posTarget.current.y += b * 0.075
+      ptrTarget.current.x += g * 0.05
+      ptrTarget.current.y += b * 0.05
+    }
 
-    const positionStrength = 0.075
-    const positionVector = new Vector3(gamma * positionStrength, beta * positionStrength, 0)
+    const eDO = DeviceOrientationEvent as unknown as {
+      requestPermission(): Promise<'granted' | 'denied'>
+    }
+    if (typeof eDO?.requestPermission === 'function') {
+      eDO
+        .requestPermission()
+        .then((res: string) => {
+          if (res === 'granted') window.addEventListener('deviceorientation', onOrientation)
+        })
+        .catch(() => {})
+    } else {
+      window.addEventListener('deviceorientation', onOrientation)
+    }
 
-    iterateRotationTarget(rotationVector)
-    iteratePositionTarget(positionVector)
+    return () => window.removeEventListener('deviceorientation', onOrientation)
+  }, [])
+
+  useFrame((_, delta) => {
+    if (reduced.current || !groupRef.current) return
+
+    const ease = 1 - Math.pow(1 - EASE, delta * 60)
+    const friction = 1 - Math.pow(1 - FRICTION, delta * 60)
+
+    rotTarget.current.multiplyScalar(1 - friction)
+    posTarget.current.multiplyScalar(1 - friction)
+    ptrTarget.current.multiplyScalar(1 - friction)
+
+    rotCurrent.current.lerp(rotTarget.current, ease)
+    posCurrent.current.lerp(posTarget.current, ease)
+    ptrCurrent.current.lerp(ptrTarget.current, ease)
+
+    groupRef.current.rotation.set(rotCurrent.current.y * ROTATION_MULTIPLIER, rotCurrent.current.x * ROTATION_MULTIPLIER, 0)
+    groupRef.current.position.set(posCurrent.current.x, -posCurrent.current.y, 0)
+
+    scratchPtr.current.set(ptrCurrent.current.x * PARALLAX_STRENGTH, -ptrCurrent.current.y * PARALLAX_STRENGTH, 0)
+    pointerBodyRef.current?.setNextKinematicTranslation(scratchPtr.current)
   })
 
   return (
     <>
-      <Environment files="env/warehouse.hdr" environmentIntensity={1} />
-
+      <Environment preset="warehouse" environmentIntensity={1} />§
       <Physics gravity={[0, 0, 0]} colliders="hull">
-        <group ref={groupRef} scale={1}>
-          <Pointer />
+        <group ref={groupRef}>
+          <RigidBody ref={pointerBodyRef} type="kinematicPosition">
+            <mesh>
+              <sphereGeometry args={[0.75, 16, 16]} />
+              <meshBasicMaterial transparent opacity={0} />
+            </mesh>
+
+            <mesh>
+              <sphereGeometry args={[0.5, 16, 16]} />
+              <meshStandardMaterial color={0xffde02} emissive={0x555555} roughness={0.5} />
+            </mesh>
+          </RigidBody>
 
           <Model />
         </group>
@@ -318,179 +148,40 @@ const Scene: FC = () => {
   )
 }
 
-const Pointer: FC = () => {
+const FloatingSphere: FC<PropsWithChildren> = ({ children }) => {
   const bodyRef = useRef<RapierRigidBody>(null)
-
-  const { iterateTarget } = useAnimatableVec3(({ x, y }) => {
-    bodyRef.current?.setNextKinematicTranslation(new Vector3(x * parallax, -y * parallax, 0))
-  })
-
-  useMouseMoveDelta(({ x, y }) => iterateTarget(new Vector3(x, y, 0)))
-
-  useDeviceOrientationDelta(({ gamma, beta }) => {
-    const strength = 0.05
-
-    iterateTarget(new Vector3(gamma * strength, beta * strength, 0))
-  })
-
-  useScreenPositionDelta(({ x, y }) => {
-    const strength = 3
-    const vec = new Vector3(-x * strength, -y * strength, 0)
-
-    iterateTarget(vec)
-  })
-
-  return (
-    <RigidBody ref={bodyRef} type="kinematicPosition">
-      <group>
-        <mesh>
-          <sphereGeometry args={[0.75, 32, 32]} />
-
-          <meshBasicMaterial transparent opacity={0} />
-        </mesh>
-
-        <mesh>
-          <sphereGeometry args={[0.5, 32, 32]} />
-
-          <meshStandardMaterial color={0x999999} emissive={0x555555} metalness={0.0} roughness={0.5} />
-        </mesh>
-      </group>
-    </RigidBody>
-  )
-}
-
-const ModelRigidBody: FC<PropsWithChildren> = ({ children }) => {
-  const ref = useRef<RapierRigidBody>(null)
-
-  const vec = useMemo(() => new Vector3(), [])
+  const impulse = useRef(new Vector3())
 
   useFrame(() => {
-    const body = ref.current
-
-    body?.applyImpulse(vec.copy(body.translation()).negate().multiplyScalar(0.02), true)
+    const body = bodyRef.current
+    if (!body) return
+    const t = body.translation()
+    impulse.current.set(t.x, t.y, t.z).negate().multiplyScalar(0.02)
+    body.applyImpulse(impulse.current, true)
   })
 
   return (
-    <RigidBody ref={ref} lockRotations linearDamping={1} angularDamping={1} friction={1} restitution={0.5}>
+    <RigidBody ref={bodyRef} lockRotations linearDamping={1} angularDamping={1} friction={1} restitution={0.5}>
       {children}
     </RigidBody>
   )
 }
 
-const Modify: FC<{
-  children: ReactElement[]
-}> = ({ children }) =>
-  React.Children.toArray(children).map((child, i) => (
-    <ModelRigidBody key={(child as ReactElement).key || i}>
-      {cloneElement(child as ReactElement, { material } as Partial<Record<string, unknown>>)}
-    </ModelRigidBody>
-  ))
-
-const WebGPUPostProcessing = () => {
-  const { gl: renderer, scene, camera } = useThree()
-  const postProcessingRef = useRef<PostProcessing>(null)
-
-  useEffect(() => {
-    if (!renderer || !scene || !camera) {
-      return undefined
-    }
-
-    const postProcessing = new PostProcessing(renderer as any)
-    postProcessingRef.current = postProcessing
-
-    const scenePass = pass(scene, camera)
-    const scenePassColor = scenePass.getTextureNode('output')
-
-    const bloomPass = bloom(scenePassColor)
-    bloomPass.strength = bloomSettings.strength
-    bloomPass.radius = bloomSettings.radius
-    bloomPass.threshold = bloomSettings.threshold
-
-    postProcessing.outputNode = scenePassColor.add(bloomPass)
-
-    return () => {
-      postProcessing.dispose()
-    }
-  }, [renderer, scene, camera])
-
-  useFrame(() => {
-    postProcessingRef.current?.render()
-  }, 1)
-
-  return null
-}
-
-const Model = () => {
-  const gltf = useGLTF('/3dmodal/model.glb')
-  const nodes = gltf.nodes as any
+const Model: FC = () => {
+  const { nodes } = useGLTF(MODEL_PATH) as unknown as {
+    nodes: Record<string, Object3D>
+  }
 
   return (
-    <Modify>
-      <mesh geometry={nodes.Icosphere001.geometry} material={nodes.Icosphere001.material} />
-
-      <mesh geometry={nodes.Icosphere003.geometry} material={nodes.Icosphere003.material} />
-
-      <mesh geometry={nodes.Icosphere004.geometry} material={nodes.Icosphere004.material} />
-
-      <mesh geometry={nodes.Icosphere007.geometry} material={nodes.Icosphere007.material} />
-
-      <mesh geometry={nodes.Icosphere008.geometry} material={nodes.Icosphere008.material} />
-
-      <mesh geometry={nodes.Icosphere009.geometry} material={nodes.Icosphere009.material} />
-
-      <mesh geometry={nodes.Icosphere010.geometry} material={nodes.Icosphere010.material} />
-
-      <mesh geometry={nodes.Icosphere012.geometry} material={nodes.Icosphere012.material} />
-
-      <mesh geometry={nodes.Icosphere014.geometry} material={nodes.Icosphere014.material} />
-
-      <mesh geometry={nodes.Icosphere015.geometry} material={nodes.Icosphere015.material} />
-
-      <mesh geometry={nodes.Icosphere017.geometry} material={nodes.Icosphere017.material} />
-
-      <mesh geometry={nodes.Icosphere018.geometry} material={nodes.Icosphere018.material} />
-
-      <mesh geometry={nodes.Icosphere020.geometry} material={nodes.Icosphere020.material} />
-
-      <mesh geometry={nodes.Icosphere023.geometry} material={nodes.Icosphere023.material} />
-
-      <mesh geometry={nodes.Icosphere024.geometry} material={nodes.Icosphere024.material} />
-
-      <mesh geometry={nodes.Icosphere025.geometry} material={nodes.Icosphere025.material} />
-
-      <mesh geometry={nodes.Icosphere026.geometry} material={nodes.Icosphere026.material} />
-
-      <mesh geometry={nodes.Icosphere028.geometry} material={nodes.Icosphere028.material} />
-
-      <mesh geometry={nodes.Icosphere029.geometry} material={nodes.Icosphere029.material} />
-
-      <mesh geometry={nodes.Icosphere030.geometry} material={nodes.Icosphere030.material} />
-
-      <mesh geometry={nodes.Icosphere002.geometry} material={nodes.Icosphere002.material} />
-
-      <mesh geometry={nodes.Icosphere005.geometry} material={nodes.Icosphere005.material} />
-
-      <mesh geometry={nodes.Icosphere006.geometry} material={nodes.Icosphere006.material} />
-
-      <mesh geometry={nodes.Icosphere011.geometry} material={nodes.Icosphere011.material} />
-
-      <mesh geometry={nodes.Icosphere013.geometry} material={nodes.Icosphere013.material} />
-
-      <mesh geometry={nodes.Icosphere016.geometry} material={nodes.Icosphere016.material} />
-
-      <mesh geometry={nodes.Icosphere019.geometry} material={nodes.Icosphere019.material} />
-
-      <mesh geometry={nodes.Icosphere021.geometry} material={nodes.Icosphere021.material} />
-
-      <mesh geometry={nodes.Icosphere022.geometry} material={nodes.Icosphere022.material} />
-
-      <mesh geometry={nodes.Icosphere027.geometry} material={nodes.Icosphere027.material} />
-
-      <mesh geometry={nodes.Icosphere031.geometry} material={nodes.Icosphere031.material} />
-
-      <mesh geometry={nodes.Icosphere032.geometry} material={nodes.Icosphere032.material} />
-    </Modify>
-    // return <Modify>{nodes.Extrude && <mesh geometry={nodes.Extrude.geometry} material={nodes.Extrude.material} />}</Modify>
+    <>
+      {Object.entries(nodes)
+        .filter((entry): entry is [string, Mesh] => entry[1] instanceof Mesh && entry[1].name.startsWith('Icosphere'))
+        .map(([key, mesh]) => (
+          <FloatingSphere key={key}>
+            <mesh geometry={mesh.geometry} material={glassMaterial} />
+          </FloatingSphere>
+        ))}
+    </>
   )
 }
 
@@ -500,29 +191,26 @@ export default function IntroScene() {
   return (
     <section className="relative size-full">
       <Canvas
-        dpr={[0.8, 3]}
+        dpr={[0.8, 2]}
         gl={async ({ canvas }) => {
           const renderer = new WebGPURenderer({
             canvas: canvas as HTMLCanvasElement,
             alpha: true,
             antialias: true,
           })
-
           renderer
             .init()
             .then(() => setFrameloop('always'))
-            .catch(null)
-
+            .catch(() => {})
           return renderer
         }}
         camera={{ fov: 60 }}
         frameloop={frameloop}
       >
-        <WebGPUPostProcessing />
         <Scene />
+
+        <OrbitControls enableZoom={false} enablePan={false} />
       </Canvas>
     </section>
   )
 }
-
-// i want the IntroScene to show in the HeroCenter untell the user choose project from the project tap so this intro scene exit animation and show the hero center

@@ -52,7 +52,6 @@
 | `framer-motion`         | ^12.38.0 |
 | `lenis`                 | ^1.3.21  |
 | `@studio-freight/lenis` | ^1.0.42  |
-| `lucide-react`          | ^0.577.0 |
 
 ### 🔊 Audio
 

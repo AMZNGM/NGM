@@ -114,7 +114,7 @@ export default function HeroCenter() {
       <GooeySvgFilter id="hero-gooey" strength={2} />
 
       {/* Tabs */}
-      <AnimIn center blur delay={2.5} className="relative scale-y-75 origin-top">
+      <AnimIn center blur delay={1.2} className="relative scale-y-75 origin-top">
         {/* gooey */}
         <div style={{ filter: 'url(#hero-gooey)' }} className="flex items-center w-full">
           {tabs.map((tab) => (
@@ -151,7 +151,7 @@ export default function HeroCenter() {
         </div>
       </AnimIn>
 
-      <MotionLine delay={1.2} className="-mt-2 md:-mt-3!" />
+      <MotionLine delay={0.5} className="-mt-2 md:-mt-3!" />
 
       {/* Scrollable Content Area */}
       <div

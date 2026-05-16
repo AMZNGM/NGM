@@ -5,7 +5,6 @@ import { useCallback, useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useSoundEffects } from '@/hooks/useSoundEffects'
 import { easings } from '@/utils/anim'
-import { Plus } from 'lucide-react'
 import AnimText from '@/components/ui/unstyled/AnimText'
 import CloseBtn from '@/components/ui/buttons/CloseBtn'
 import { CONTACT } from '@/data/db'
@@ -125,7 +124,15 @@ export default function ContactModal() {
                             {item.text}
                           </AnimText>
 
-                          <Plus size={16} strokeWidth={1.5} className="group-hover:rotate-700 group-hover:scale-y-500 duration-100" />
+                          <svg
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="size-4 group-hover:rotate-700 group-hover:scale-y-500 duration-100"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                          </svg>
                         </a>
                       </motion.li>
                     )
