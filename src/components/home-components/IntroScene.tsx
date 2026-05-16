@@ -14,7 +14,7 @@ const FRICTION = 0.1
 const MODEL_PATH = '/3dmodal/model.glb'
 const glassMaterial = new MeshPhysicalMaterial({
   color: 0xeeefff,
-  emissive: 0xffffff90,
+  emissive: 0x171717,
   reflectivity: 0.2,
   roughness: 0.1,
   metalness: 0.1,

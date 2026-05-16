@@ -25,7 +25,7 @@ export default function SkillsSection() {
               {set.category}
             </AnimText>
 
-            <div className="gap-[1dvw] md:gap-[0.5dvw] grid">
+            <div className="gap-[1dvw] md:gap-[0.5dvw] grid w-fit">
               {set.items.map((item, index) => (
                 <AnimText
                   as="span"

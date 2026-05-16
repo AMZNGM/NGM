@@ -51,10 +51,11 @@ export default function Hero() {
                   scale: 1.9,
                   filter: 'blur(20px)',
                   y: -50,
+                  rotateZ: 36000,
                   transition: { duration: 0.7, ease: [0.32, 0, 0.67, 0] },
                 }}
               >
-                <AnimIn center blur delay={2} className="max-md:h-100 size-full">
+                <AnimIn center blur delay={2} className="max-md:h-100 md:max-h-[83dvh] size-full">
                   <Suspense fallback={null}>
                     <IntroScene />
                   </Suspense>
@@ -63,7 +64,7 @@ export default function Hero() {
             ) : (
               <motion.div
                 key="center"
-                className="size-full"
+                className="md:max-h-[83dvh] size-full"
                 initial={{ opacity: 0, y: 30, filter: 'blur(16px)', scale: 1.04 }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)', scale: 1 }}
                 transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
@@ -91,10 +92,10 @@ export default function Hero() {
       </div>
 
       <div className="z-9999 relative pointer-events-none select-none">
-        <div className="top-0 right-0 fixed w-12 h-full bg-linear-to-r from-transparent via-transparent to-bg" />
-        <div className="top-0 left-0 fixed w-12 h-full bg-linear-to-l from-transparent via-transparent to-bg" />
-        <div className="top-0 right-0 left-0 fixed w-full h-12 bg-linear-to-t from-transparent via-transparent to-bg" />
-        <div className="right-0 bottom-0 left-0 fixed w-full h-12 bg-linear-to-b from-transparent via-transparent to-bg" />
+        <div className="top-0 right-0 fixed w-9 h-full bg-linear-to-r from-transparent via-transparent to-bg" />
+        <div className="top-0 left-0 fixed w-9 h-full bg-linear-to-l from-transparent via-transparent to-bg" />
+        <div className="top-0 right-0 left-0 fixed w-full h-9 bg-linear-to-t from-transparent via-transparent to-bg" />
+        <div className="right-0 bottom-0 left-0 fixed w-full h-9 bg-linear-to-b from-transparent via-transparent to-bg" />
       </div>
     </section>
   )

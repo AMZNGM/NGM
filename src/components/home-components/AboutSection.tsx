@@ -48,7 +48,7 @@ export default function AboutSection() {
             as="p"
             delay={delay}
             stagger={0.008}
-            className="opacity-80 font-bold text-[3dvw] md:text-[1dvw] text-balance leading-[3.5dvw] md:leading-[1.3dvw]"
+            className="opacity-80 font-bold text-[3dvw] md:text-[1dvw] leading-[3.5dvw] md:leading-[1.3dvw]"
           >
             {BIO.audioBio}
           </AnimText>
@@ -58,7 +58,7 @@ export default function AboutSection() {
               as="p"
               delay={delay}
               stagger={0.008}
-              className="opacity-80 font-bold text-[4.2dvw] md:text-[0.95dvw] mb-[2dvw] md:mb-[1dvw]"
+              className="opacity-80 font-bold text-[4.2dvw] md:text-[0.95dvw] text-balance mb-[0.15dvw]"
             >
               {BIO.tagLine}
             </AnimText>
@@ -67,12 +67,12 @@ export default function AboutSection() {
               as="p"
               delay={delay}
               stagger={0.008}
-              className="opacity-80 font-bold text-[4.2dvw] md:text-[0.95dvw] mb-[2dvw] md:mb-[1dvw]"
+              className="opacity-80 font-bold text-[4.2dvw] md:text-[0.95dvw] text-balance mb-[2dvw] md:mb-[1dvw]"
             >
               {BIO.summary}
             </AnimText>
 
-            <p className="opacity-60 font-sec text-[3.1dvw] md:text-[0.65dvw] text-balance md:scale-y-120 md:origin-top mb-[4dvw] md:mb-[2dvw]">
+            <p className="opacity-60 font-sec text-[3.1dvw] md:text-[0.65dvw] text-end uppercase text-balance md:scale-y-120 md:origin-top mb-[4dvw] md:mb-[2dvw]">
               {BIO.experience.split(/(__Professional audio engineer|10 years|Nike|modern web services__)/).map((part, i) => {
                 const isHighlight =
                   part === '__Professional audio engineer' || part === '10 years' || part === 'Nike' || part === 'modern web services__'
