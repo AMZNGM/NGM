@@ -87,7 +87,7 @@ Get the portfolio running on your machine in minutes.
 ### 1. Prerequisites
 
 - **Node.js** (v18.x+)
-- **npm** or **yarn**
+- **bun** or **npm**
 
 ### 2. Setup
 
@@ -99,13 +99,13 @@ git clone https://github.com/AMZNGM/ngm.git
 cd ngm
 
 # Install dependencies
-npm install
+bun install
 ```
 
 ### 3. Development
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 The app will be available at [http://localhost:3000](http://localhost:3000).

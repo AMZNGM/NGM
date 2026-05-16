@@ -9,27 +9,28 @@ export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://amzngm.com/'),
 
   title: {
-    default: '_N G M | Creative Developer',
-    template: '%s | Abdulrahman NGM | N G M |  – Creative Frontend Developer',
+    default: 'NGM | Creative Developer',
+    template: '%s | NGM – Creative Developer',
   },
 
   description:
-    'Portfolio of Abdulrahman NGM, a creative frontend developer specializing in interactive and motion-driven web experiences using React, Next.js, GSAP, and Framer Motion.',
+    'WebAR Engineer & Creative 3D Developer. Building real-time AR try-on systems, 3D configurators, and motion-driven web experiences with Three.js, MediaPipe, React Three Fiber, and GSAP.',
 
-  keywords: ['Creative Frontend Developer', 'React Developer', 'Next.js Developer', 'GSAP Animation', 'Framer Motion'],
+  keywords: ['Creative Developer', 'Developer', 'Web', 'Creative Developer', '3D Developer', 'WebAR Developer', 'WebAR'],
 
-  authors: [{ name: 'Abdulrahman NGM' }],
-  creator: 'Abdulrahman NGM',
+  authors: [{ name: 'NGM' }],
+  creator: 'NGM',
 
   alternates: {
     canonical: 'https://amzngm.com/',
   },
 
   openGraph: {
-    title: 'NGM – Creative Frontend Developer',
-    description: 'Creative frontend developer building motion-driven web experiences with React, Next.js, GSAP, and Framer Motion.',
+    title: 'NGM | Creative Developer',
+    description:
+      'WebAR Engineer & Creative 3D Developer. Building real-time AR try-on systems, 3D configurators, and motion-driven web experiences with Three.js, MediaPipe, React Three Fiber, and GSAP.',
     url: 'https://amzngm.com/',
-    siteName: 'Abdulrahman NGM Portfolio',
+    siteName: 'NGM Portfolio',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -37,15 +38,16 @@ export const metadata = {
         url: '/images/NGM-CORRPRET.webp',
         width: 1200,
         height: 630,
-        alt: 'NGM - Creative Frontend Developer',
+        alt: 'NGM - Creative Developer',
       },
     ],
   },
 
   twitter: {
     card: 'summary_large_image',
-    title: 'NGM – Creative Frontend Developer',
-    description: 'Creative frontend developer specializing in interactive and motion-driven websites.',
+    title: 'NGM | Creative Developer',
+    description:
+      'WebAR Engineer & Creative 3D Developer. Building real-time AR try-on systems, 3D configurators, and motion-driven web experiences with Three.js, MediaPipe, React Three Fiber, and GSAP.',
     images: ['/images/NGM-CORRPRET.webp'],
   },
 }

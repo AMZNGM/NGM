@@ -3,6 +3,7 @@ import { useSoundEffects } from '@/hooks/useSoundEffects'
 import AnimIn from '@/components/ui/unstyled/AnimIn'
 import AnimText from '@/components/ui/unstyled/AnimText'
 import { BIO, CONTACT } from '@/data/db'
+import { MotionLine } from '@/components/ui/effects/Lines'
 
 export default function AboutSection() {
   const { isAudio, isFirstLoadUI } = useUIStore()
@@ -10,7 +11,7 @@ export default function AboutSection() {
   const delay = isFirstLoadUI ? 2.1 : 0
 
   return (
-    <AnimIn as="section" center blur delay={delay} className="group relative space-y-[3.2dvw] md:space-y-[1.8dvw] my-4">
+    <AnimIn as="section" center blur delay={delay} className="group relative space-y-[3.2dvw] md:space-y-[1.8dvw] mt-4">
       <AnimText
         key={isAudio ? 'about-audio' : 'about-dev'}
         as="h4"
@@ -23,7 +24,7 @@ export default function AboutSection() {
       <div key={isAudio ? 'content-audio' : 'content-dev'} className="space-y-[3.2dvw] md:space-y-[1.8dvw]">
         <AnimText
           delay={delay}
-          className="text-shadow-text text-shadow-xs font-bold text-[4.7dvw] md:text-[0.9dvw] uppercase leading-[1dvw] tracking-tighter scale-x-111 origin-left mb-[2.75dvw] md:mb-[0.75dvw]"
+          className="text-shadow-text text-shadow-xs font-bold text-[4.7dvw] md:text-[0.9dvw] uppercase tracking-tighter scale-x-111 origin-left mb-[2.75dvw] md:mb-[0.75dvw]"
         >
           <div className="flex items-center gap-[0.2dvw] max-md:gap-[0.5dvw]">
             <svg
@@ -35,7 +36,10 @@ export default function AboutSection() {
               <path d="M71.52,87.1l34.79-34.75c1.38-1.38.78-3.73-1.09-4.29l-33.89-10c-1.96-.58-3.77,1.24-3.19,3.2l6.46,21.83c.58,1.95-1.24,3.77-3.19,3.2l-27.33-8.07c-.91-.27-1.89-.02-2.55.65l-12.92,13c-1.37,1.38-.77,3.73,1.1,4.28l39.29,11.59c.9.27,1.88.02,2.55-.65Z" />
             </svg>
 
-            {isAudio ? BIO.audioTitle : BIO.title}
+            <div className="flex flex-wrap md:gap-1">
+              <span>{isAudio ? BIO.audioTitle : BIO.title}</span>
+              <span>{!isAudio && BIO.title2}</span>
+            </div>
           </div>
         </AnimText>
 
@@ -50,6 +54,15 @@ export default function AboutSection() {
           </AnimText>
         ) : (
           <>
+            <AnimText
+              as="p"
+              delay={delay}
+              stagger={0.008}
+              className="opacity-80 font-bold text-[4.2dvw] md:text-[0.95dvw] mb-[2dvw] md:mb-[1dvw]"
+            >
+              {BIO.tagLine}
+            </AnimText>
+
             <AnimText
               as="p"
               delay={delay}
@@ -108,6 +121,8 @@ export default function AboutSection() {
           </AnimIn>
         )}
       </div>
+
+      <MotionLine />
     </AnimIn>
   )
 }

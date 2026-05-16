@@ -69,7 +69,7 @@ export default function ContactModal() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="z-50 fixed inset-0 flex justify-center items-center h-dvh bg-bg/50 backdrop-blur-sm"
+              className="z-50 fixed inset-0 flex justify-center items-center h-dvh bg-bg/80 backdrop-blur-md"
             >
               <div
                 onClick={close}
@@ -80,26 +80,24 @@ export default function ContactModal() {
                 className="fixed inset-0 opacity-5 invert-100"
               />
 
-              <div className="relative flex flex-col w-full max-w-md overflow-hidden overscroll-contain bg-text/22 rounded-lg m-2 p-9">
+              <div className="relative flex flex-col max-w-xl max-h-2/3 size-full overflow-hidden overscroll-contain bg-text/22 rounded-lg m-2 p-9">
                 <motion.div
                   initial={{ opacity: 0, y: 28, filter: 'blur(10px)' }}
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                   exit={{ opacity: 0, y: 28, filter: 'blur(10px)' }}
                   transition={{ delay: 0.06, duration: 0.6342, ease: easings.cubiz, filter: { delay: 0.674, duration: 0.342 } }}
-                  className="flex justify-between items-center mb-6"
+                  className="flex justify-center items-center mb-6"
                 >
                   <AnimText
                     as="h2"
                     delay={0.5}
-                    className="blur-[1.2px] font-sec font-semibold text-lg md:text-xl uppercase tracking-widest"
+                    className="blur-[1.2px] font-sec font-semibold text-lg md:text-xl uppercase tracking-[1.6dvw] scale-y-800 origin-top"
                   >
                     Reach_out
                   </AnimText>
-
-                  <CloseBtn onClick={close} />
                 </motion.div>
 
-                <ul className="flex flex-col gap-1.5">
+                <ul className="flex flex-col justify-center gap-4 size-full">
                   {CONTACT.map((item, i) => {
                     return (
                       <motion.li
@@ -123,16 +121,18 @@ export default function ContactModal() {
                           rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                           className="group flex justify-between hover:bg-bg/8 blur-[0.8px] hover:blur-none rounded-2xl hover:text-main uppercase px-2 py-1"
                         >
-                          <AnimText delay={0.1 * i} className="max-md:text-sm scale-x-140 scale-y-90 origin-left">
+                          <AnimText delay={0.1 * i} className="max-md:text-sm scale-x-140 scale-y-90 group-hover:scale-y-500 origin-left">
                             {item.text}
                           </AnimText>
 
-                          <Plus size={16} strokeWidth={1.5} className="group-hover:rotate-70 duration-300" />
+                          <Plus size={16} strokeWidth={1.5} className="group-hover:rotate-700 group-hover:scale-y-500 duration-100" />
                         </a>
                       </motion.li>
                     )
                   })}
                 </ul>
+
+                <CloseBtn onClick={close} />
               </div>
             </motion.div>
           )}

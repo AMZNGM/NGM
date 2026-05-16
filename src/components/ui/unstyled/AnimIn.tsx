@@ -4,7 +4,7 @@ import { useMemo, forwardRef } from 'react'
 import { motion, type MotionProps, useReducedMotion, type Variants } from 'motion/react'
 
 interface AnimInProps extends MotionProps {
-  children: React.ReactNode
+  children?: React.ReactNode
   as?: keyof typeof motion
   className?: string
   delay?: number

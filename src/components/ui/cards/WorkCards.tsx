@@ -17,7 +17,7 @@ export default function WorkCard({ item, index, variant = 'standard' }: { item: 
 
         {item.image && (
           <div className="relative size-full aspect-video md:aspect-21/9">
-            <Image src={item.image} alt={item.title} fill className="object-cover group-hover:invert" />
+            <Image src={item.image} alt={item.title} fill sizes="100dvw" className="object-cover" />
             <span className="top-2 left-2 absolute flex size-[clamp(0.375rem,0.5dvw,0.75rem)] bg-main rounded-full animate-pulse" />
           </div>
         )}
@@ -51,7 +51,7 @@ export default function WorkCard({ item, index, variant = 'standard' }: { item: 
 
         {item.image && (
           <div className="relative w-[clamp(3rem,8dvw,8rem)] aspect-4/3 overflow-hidden border border-text/5 rounded-lg shrink-0">
-            <Image src={item.image} alt={item.title} fill className="object-cover group-hover:invert" />
+            <Image src={item.image} alt={item.title} fill sizes="100dvw" className="object-cover" />
           </div>
         )}
 
@@ -89,7 +89,7 @@ export default function WorkCard({ item, index, variant = 'standard' }: { item: 
 
       {item.image && (
         <div className="relative size-full aspect-video">
-          <Image src={item.image} alt={item.title} fill className="object-cover group-hover:invert" />
+          <Image src={item.image} alt={item.title} fill sizes="100dvw" className="object-cover" />
         </div>
       )}
 

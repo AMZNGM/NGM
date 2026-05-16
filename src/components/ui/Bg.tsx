@@ -16,15 +16,15 @@ export default function Bg({ mode }: { mode?: number }) {
   return (
     <>
       {bgMode === 0 ? (
-        <div key="black-bg" className="-z-1 fixed inset-0 bg-bg pointer-events-none select-none" />
-      ) : bgMode === 1 ? (
         <div key="gif-bg" className="-z-1 fixed inset-0 grayscale-100 pointer-events-none select-none">
           <Image src="/images/ngm-gif.gif" alt="Background" fill priority className="object-cover opacity-50" />
         </div>
-      ) : (
+      ) : bgMode === 1 ? (
         <div key="silk-bg" className="-z-1 fixed inset-0 bg-bg pointer-events-none select-none">
           <Silk speed={5.2} scale={1} color="#303030" noiseIntensity={1.5} rotation={0} />
         </div>
+      ) : (
+        <div key="black-bg" className="-z-1 fixed inset-0 bg-bg pointer-events-none select-none" />
       )}
     </>
   )

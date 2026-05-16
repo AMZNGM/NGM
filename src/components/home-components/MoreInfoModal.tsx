@@ -59,7 +59,7 @@ export default function MoreInfoModal({ moreInfo, projectTitle }: { moreInfo: st
               initial="initial"
               animate="animate"
               exit="exit"
-              className="z-50 fixed inset-0 flex justify-center items-center h-dvh bg-bg/50 backdrop-blur-sm"
+              className="z-50 fixed inset-0 flex justify-center items-center h-dvh bg-bg/80 backdrop-blur-md"
             >
               <div
                 onClick={close}
@@ -67,10 +67,19 @@ export default function MoreInfoModal({ moreInfo, projectTitle }: { moreInfo: st
                   backgroundImage:
                     "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
                 }}
-                className="fixed inset-0 opacity-5 invert-100"
+                className="fixed inset-0 opacity-2 invert-100"
               />
 
-              <div className="relative flex flex-col w-full max-w-[40dvw] max-md:max-w-[90dvw] max-h-[80dvh] overflow-hidden overscroll-contain bg-text/22 backdrop-blur-3xl rounded-[0.5dvw] max-md:rounded-[1dvw] m-[1dvw] max-md:m-[3dvw] p-[2dvw] max-md:p-[4dvw]">
+              <div className="relative flex flex-col max-w-3xl max-h-[80dvh] size-full overflow-hidden overscroll-contain bg-text/12 shadow-2xl shadow-text/10 backdrop-blur-3xl rounded-[0.5dvw] max-md:rounded-[1dvw] m-[1dvw] max-md:m-[3dvw] p-[2dvw] max-md:p-[4dvw]">
+                <div
+                  onClick={close}
+                  style={{
+                    backgroundImage:
+                      "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                  }}
+                  className="fixed inset-0 opacity-5 invert-100"
+                />
+
                 <motion.div
                   initial={{ opacity: 0, y: 28 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -78,7 +87,7 @@ export default function MoreInfoModal({ moreInfo, projectTitle }: { moreInfo: st
                   transition={{ delay: 0.06, duration: 0.5, ease: easings.cubiz }}
                   className="flex justify-between items-start gap-[1dvw] max-md:gap-[2dvw] mb-[1.5dvw] max-md:mb-[4dvw] shrink-0"
                 >
-                  <div className="flex items-center gap-[0.5dvw] max-md:gap-[2dvw] blur-[0.1dvw] font-sec font-semibold text-[1dvw] max-md:text-[3.5dvw] uppercase tracking-widest">
+                  <div className="flex justify-center items-center gap-[0.5dvw] max-md:gap-[2dvw] w-full blur-[0.1dvw] font-sec font-semibold text-[1dvw] max-md:text-[3.5dvw] uppercase tracking-widest scale-y-400 origin-top">
                     <AnimText delay={0.4} className="max-md:hidden">
                       <svg viewBox="0 0 120.02 60.51" className="size-[1.5dvw] max-md:size-[7dvw] fill-text">
                         <g>
@@ -100,8 +109,6 @@ export default function MoreInfoModal({ moreInfo, projectTitle }: { moreInfo: st
                       <span>More Info about {projectTitle}</span>
                     </AnimText>
                   </div>
-
-                  <CloseBtn onClick={close} className="origin-top" />
                 </motion.div>
 
                 <motion.div
@@ -109,18 +116,14 @@ export default function MoreInfoModal({ moreInfo, projectTitle }: { moreInfo: st
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                   exit={{ opacity: 0, y: 20, filter: 'blur(2px)' }}
                   transition={{ delay: 0.2, duration: 0.5, ease: easings.cubiz, filter: { delay: 1, duration: 0.5 } }}
-                  className="flex-1 overflow-y-auto"
+                  className="inline-flex flex-1 justify-center items-center overflow-y-auto text-center"
                 >
-                  <AnimText
-                    delay={0.5}
-                    stagger={0.009}
-                    className="font-sec font-bold text-[1.1dvw] text-text/90 max-md:text-[3.5dvw] leading-relaxed"
-                  >
+                  <AnimText delay={0.5} stagger={0.009} className="font-sec font-bold text-text/90 max-md:text-sm text-xl leading-relaxed">
                     {moreInfo}
                   </AnimText>
                 </motion.div>
 
-                <button></button>
+                <CloseBtn onClick={close} className="origin-top" />
               </div>
             </motion.div>
           )}
